@@ -1,0 +1,534 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E94008831709DDB900314D67 /* RegularVertex.glsl */; };
+		E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E94008841709DDB900314D67 /* Stereoscopic.glsl */; };
+		E972A62A1708129100E77895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6291708129100E77895 /* UIKit.framework */; };
+		E972A62C1708129100E77895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62B1708129100E77895 /* Foundation.framework */; };
+		E972A62E1708129100E77895 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62D1708129100E77895 /* CoreGraphics.framework */; };
+		E972A6341708129100E77895 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E972A6321708129100E77895 /* InfoPlist.strings */; };
+		E972A63C1708129200E77895 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63B1708129200E77895 /* Default.png */; };
+		E972A63E1708129200E77895 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63D1708129200E77895 /* Default@2x.png */; };
+		E972A6401708129200E77895 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63F1708129200E77895 /* Default-568h@2x.png */; };
+		E972A6461708129200E77895 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = E972A6441708129200E77895 /* ViewController_iPhone.xib */; };
+		E972A6491708129200E77895 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = E972A6471708129200E77895 /* ViewController_iPad.xib */; };
+		E972A6511708129500E77895 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6501708129400E77895 /* SenTestingKit.framework */; };
+		E972A6521708129500E77895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6291708129100E77895 /* UIKit.framework */; };
+		E972A6531708129500E77895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62B1708129100E77895 /* Foundation.framework */; };
+		E972A65B1708129500E77895 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E972A6591708129500E77895 /* InfoPlist.strings */; };
+		E972A65E1708129500E77895 /* Mountains_IIbTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A65D1708129500E77895 /* Mountains_IIbTests.m */; };
+		E972A66A170812CC00E77895 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A667170812CC00E77895 /* GLKit.framework */; };
+		E972A66B170812CC00E77895 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A668170812CC00E77895 /* OpenGLES.framework */; };
+		E972A66C170812CC00E77895 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A669170812CC00E77895 /* QuartzCore.framework */; };
+		E972A67F170815CE00E77895 /* bigtexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A67E170815CE00E77895 /* bigtexture.png */; };
+		E972A68417081DE700E77895 /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E972A680170815DD00E77895 /* Fragment.glsl */; };
+		E972A68517081DE700E77895 /* Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E972A681170815DE00E77895 /* Vertex.glsl */; };
+		E972A6871709949000E77895 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A679170815C000E77895 /* GLProgram.m */; };
+		E972A6881709949000E77895 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A67B170815C000E77895 /* GLView.m */; };
+		E972A6891709949000E77895 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6391708129200E77895 /* AppDelegate.m */; };
+		E972A68A1709949000E77895 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6421708129200E77895 /* ViewController.m */; };
+		E972A68B1709949000E77895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6351708129100E77895 /* main.m */; };
+		E972A68C1709949000E77895 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6741708133300E77895 /* GameView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E972A6541708129500E77895 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E972A61E1708129000E77895 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E972A6251708129100E77895;
+			remoteInfo = "Mountains IIb";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E94008831709DDB900314D67 /* RegularVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegularVertex.glsl; sourceTree = "<group>"; };
+		E94008841709DDB900314D67 /* Stereoscopic.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stereoscopic.glsl; sourceTree = "<group>"; };
+		E972A6261708129100E77895 /* Mountains IIb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mountains IIb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E972A6291708129100E77895 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E972A62B1708129100E77895 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E972A62D1708129100E77895 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E972A6311708129100E77895 /* Mountains IIb-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mountains IIb-Info.plist"; sourceTree = "<group>"; };
+		E972A6331708129100E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E972A6351708129100E77895 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E972A6371708129200E77895 /* Mountains IIb-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mountains IIb-Prefix.pch"; sourceTree = "<group>"; };
+		E972A6381708129200E77895 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E972A6391708129200E77895 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E972A63B1708129200E77895 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E972A63D1708129200E77895 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E972A63F1708129200E77895 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		E972A6411708129200E77895 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E972A6421708129200E77895 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E972A6451708129200E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		E972A6481708129200E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		E972A64F1708129400E77895 /* Mountains IIbTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mountains IIbTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E972A6501708129400E77895 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E972A6581708129500E77895 /* Mountains IIbTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mountains IIbTests-Info.plist"; sourceTree = "<group>"; };
+		E972A65A1708129500E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E972A65C1708129500E77895 /* Mountains_IIbTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mountains_IIbTests.h; sourceTree = "<group>"; };
+		E972A65D1708129500E77895 /* Mountains_IIbTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mountains_IIbTests.m; sourceTree = "<group>"; };
+		E972A667170812CC00E77895 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		E972A668170812CC00E77895 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		E972A669170812CC00E77895 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E972A6731708133300E77895 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		E972A6741708133300E77895 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		E972A678170815C000E77895 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		E972A679170815C000E77895 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		E972A67A170815C000E77895 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
+		E972A67B170815C000E77895 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
+		E972A67E170815CE00E77895 /* bigtexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigtexture.png; sourceTree = "<group>"; };
+		E972A680170815DD00E77895 /* Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fragment.glsl; sourceTree = "<group>"; };
+		E972A681170815DE00E77895 /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E972A6231708129100E77895 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E972A66A170812CC00E77895 /* GLKit.framework in Frameworks */,
+				E972A66B170812CC00E77895 /* OpenGLES.framework in Frameworks */,
+				E972A66C170812CC00E77895 /* QuartzCore.framework in Frameworks */,
+				E972A62A1708129100E77895 /* UIKit.framework in Frameworks */,
+				E972A62C1708129100E77895 /* Foundation.framework in Frameworks */,
+				E972A62E1708129100E77895 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E972A64B1708129400E77895 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E972A6511708129500E77895 /* SenTestingKit.framework in Frameworks */,
+				E972A6521708129500E77895 /* UIKit.framework in Frameworks */,
+				E972A6531708129500E77895 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E972A61D1708129000E77895 = {
+			isa = PBXGroup;
+			children = (
+				E972A62F1708129100E77895 /* Mountains IIb */,
+				E972A6561708129500E77895 /* Mountains IIbTests */,
+				E972A6281708129100E77895 /* Frameworks */,
+				E972A6271708129100E77895 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E972A6271708129100E77895 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E972A6261708129100E77895 /* Mountains IIb.app */,
+				E972A64F1708129400E77895 /* Mountains IIbTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E972A6281708129100E77895 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E972A667170812CC00E77895 /* GLKit.framework */,
+				E972A668170812CC00E77895 /* OpenGLES.framework */,
+				E972A669170812CC00E77895 /* QuartzCore.framework */,
+				E972A6291708129100E77895 /* UIKit.framework */,
+				E972A62B1708129100E77895 /* Foundation.framework */,
+				E972A62D1708129100E77895 /* CoreGraphics.framework */,
+				E972A6501708129400E77895 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E972A62F1708129100E77895 /* Mountains IIb */ = {
+			isa = PBXGroup;
+			children = (
+				E94008831709DDB900314D67 /* RegularVertex.glsl */,
+				E94008841709DDB900314D67 /* Stereoscopic.glsl */,
+				E972A680170815DD00E77895 /* Fragment.glsl */,
+				E972A681170815DE00E77895 /* Vertex.glsl */,
+				E972A67E170815CE00E77895 /* bigtexture.png */,
+				E972A678170815C000E77895 /* GLProgram.h */,
+				E972A679170815C000E77895 /* GLProgram.m */,
+				E972A67A170815C000E77895 /* GLView.h */,
+				E972A67B170815C000E77895 /* GLView.m */,
+				E972A6381708129200E77895 /* AppDelegate.h */,
+				E972A6391708129200E77895 /* AppDelegate.m */,
+				E972A6411708129200E77895 /* ViewController.h */,
+				E972A6421708129200E77895 /* ViewController.m */,
+				E972A6441708129200E77895 /* ViewController_iPhone.xib */,
+				E972A6471708129200E77895 /* ViewController_iPad.xib */,
+				E972A6301708129100E77895 /* Supporting Files */,
+				E972A6731708133300E77895 /* GameView.h */,
+				E972A6741708133300E77895 /* GameView.m */,
+			);
+			path = "Mountains IIb";
+			sourceTree = "<group>";
+		};
+		E972A6301708129100E77895 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E972A6311708129100E77895 /* Mountains IIb-Info.plist */,
+				E972A6321708129100E77895 /* InfoPlist.strings */,
+				E972A6351708129100E77895 /* main.m */,
+				E972A6371708129200E77895 /* Mountains IIb-Prefix.pch */,
+				E972A63B1708129200E77895 /* Default.png */,
+				E972A63D1708129200E77895 /* Default@2x.png */,
+				E972A63F1708129200E77895 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E972A6561708129500E77895 /* Mountains IIbTests */ = {
+			isa = PBXGroup;
+			children = (
+				E972A65C1708129500E77895 /* Mountains_IIbTests.h */,
+				E972A65D1708129500E77895 /* Mountains_IIbTests.m */,
+				E972A6571708129500E77895 /* Supporting Files */,
+			);
+			path = "Mountains IIbTests";
+			sourceTree = "<group>";
+		};
+		E972A6571708129500E77895 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E972A6581708129500E77895 /* Mountains IIbTests-Info.plist */,
+				E972A6591708129500E77895 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E972A6251708129100E77895 /* Mountains IIb */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E972A6611708129500E77895 /* Build configuration list for PBXNativeTarget "Mountains IIb" */;
+			buildPhases = (
+				E972A6221708129100E77895 /* Sources */,
+				E972A6231708129100E77895 /* Frameworks */,
+				E972A6241708129100E77895 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mountains IIb";
+			productName = "Mountains IIb";
+			productReference = E972A6261708129100E77895 /* Mountains IIb.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E972A64E1708129400E77895 /* Mountains IIbTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E972A6641708129500E77895 /* Build configuration list for PBXNativeTarget "Mountains IIbTests" */;
+			buildPhases = (
+				E972A64A1708129400E77895 /* Sources */,
+				E972A64B1708129400E77895 /* Frameworks */,
+				E972A64C1708129400E77895 /* Resources */,
+				E972A64D1708129400E77895 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E972A6551708129500E77895 /* PBXTargetDependency */,
+			);
+			name = "Mountains IIbTests";
+			productName = "Mountains IIbTests";
+			productReference = E972A64F1708129400E77895 /* Mountains IIbTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E972A61E1708129000E77895 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Programming Thomas";
+			};
+			buildConfigurationList = E972A6211708129000E77895 /* Build configuration list for PBXProject "Mountains IIb" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E972A61D1708129000E77895;
+			productRefGroup = E972A6271708129100E77895 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E972A6251708129100E77895 /* Mountains IIb */,
+				E972A64E1708129400E77895 /* Mountains IIbTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E972A6241708129100E77895 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E972A68417081DE700E77895 /* Fragment.glsl in Resources */,
+				E972A68517081DE700E77895 /* Vertex.glsl in Resources */,
+				E972A6341708129100E77895 /* InfoPlist.strings in Resources */,
+				E972A63C1708129200E77895 /* Default.png in Resources */,
+				E972A63E1708129200E77895 /* Default@2x.png in Resources */,
+				E972A6401708129200E77895 /* Default-568h@2x.png in Resources */,
+				E972A6461708129200E77895 /* ViewController_iPhone.xib in Resources */,
+				E972A6491708129200E77895 /* ViewController_iPad.xib in Resources */,
+				E972A67F170815CE00E77895 /* bigtexture.png in Resources */,
+				E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */,
+				E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E972A64C1708129400E77895 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E972A65B1708129500E77895 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E972A64D1708129400E77895 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E972A6221708129100E77895 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E972A68A1709949000E77895 /* ViewController.m in Sources */,
+				E972A68C1709949000E77895 /* GameView.m in Sources */,
+				E972A6871709949000E77895 /* GLProgram.m in Sources */,
+				E972A6881709949000E77895 /* GLView.m in Sources */,
+				E972A6891709949000E77895 /* AppDelegate.m in Sources */,
+				E972A68B1709949000E77895 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E972A64A1708129400E77895 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E972A65E1708129500E77895 /* Mountains_IIbTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E972A6551708129500E77895 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E972A6251708129100E77895 /* Mountains IIb */;
+			targetProxy = E972A6541708129500E77895 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E972A6321708129100E77895 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E972A6331708129100E77895 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E972A6441708129200E77895 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E972A6451708129200E77895 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		E972A6471708129200E77895 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E972A6481708129200E77895 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+		E972A6591708129500E77895 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E972A65A1708129500E77895 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E972A65F1708129500E77895 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E972A6601708129500E77895 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E972A6621708129500E77895 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mountains IIb/Mountains IIb-Prefix.pch";
+				INFOPLIST_FILE = "Mountains IIb/Mountains IIb-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E972A6631708129500E77895 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mountains IIb/Mountains IIb-Prefix.pch";
+				INFOPLIST_FILE = "Mountains IIb/Mountains IIb-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E972A6651708129500E77895 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mountains IIb.app/Mountains IIb";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mountains IIb/Mountains IIb-Prefix.pch";
+				INFOPLIST_FILE = "Mountains IIbTests/Mountains IIbTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E972A6661708129500E77895 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Mountains IIb.app/Mountains IIb";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mountains IIb/Mountains IIb-Prefix.pch";
+				INFOPLIST_FILE = "Mountains IIbTests/Mountains IIbTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E972A6211708129000E77895 /* Build configuration list for PBXProject "Mountains IIb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E972A65F1708129500E77895 /* Debug */,
+				E972A6601708129500E77895 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E972A6611708129500E77895 /* Build configuration list for PBXNativeTarget "Mountains IIb" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E972A6621708129500E77895 /* Debug */,
+				E972A6631708129500E77895 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E972A6641708129500E77895 /* Build configuration list for PBXNativeTarget "Mountains IIbTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E972A6651708129500E77895 /* Debug */,
+				E972A6661708129500E77895 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E972A61E1708129000E77895 /* Project object */;
+}
