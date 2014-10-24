@@ -14,8 +14,8 @@
  limitations under the License.
  */
 
-attribute lowp vec2 TexCoord;
-attribute vec4 Position;
+attribute lowp vec2 uv;
+attribute vec4 position;
 
 uniform mat4 Projection;
 uniform mat4 Model;
@@ -25,6 +25,6 @@ varying vec2 TexCoordOut;
 
 void main(void)
 {
-    gl_Position = Projection * Model * Position;
-    TexCoordOut = TexCoord;
+    gl_Position = Projection * Model * position;
+    TexCoordOut = uv;
 }

@@ -14,17 +14,17 @@
  limitations under the License.
  */
 
-attribute vec4 Position;
+attribute vec4 position;
 
 uniform mat4 Projection;
 uniform mat4 ViewModel;
 
-attribute vec2 TexCoord;
+attribute vec2 uv;
 varying vec2 TexCoordOut;
 
 void main()
 {
-    gl_Position = Projection * ViewModel * Position;
+    gl_Position = Projection * ViewModel * position;
     
-    TexCoordOut = TexCoord;
+    TexCoordOut = uv;
 }

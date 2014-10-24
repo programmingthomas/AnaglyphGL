@@ -26,8 +26,7 @@ const int RENDER_DISTANCE = 32;
 
 const float VISIBLE_ANGLE = M_PI / 3;
 
-enum
-{
+enum {
     BUFFER_VERTEX_WORLD,
     BUFFER_INDEX_WORLD,
     BUFFER_VERTEX_SIMPLE,
@@ -35,8 +34,7 @@ enum
     NUM_BUFFERS
 };
 
-enum
-{
+enum {
     BLOCK_AIR,
     BLOCK_LEAVES,
     BLOCK_DIRT,
@@ -70,7 +68,7 @@ enum
 @property float stereoFactor;
 @property BOOL updatePosition;
 
-@property GLProgram * stereoProgram;
-@property GLProgram * mainProgram;
+@property COBGLProgram * stereoProgram;
+@property COBGLProgram * mainProgram;
 
 @end

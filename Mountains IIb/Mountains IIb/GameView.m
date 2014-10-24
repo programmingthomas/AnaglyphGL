@@ -34,28 +34,8 @@
 
 -(void)compileMainProgram
 {
-    self.mainProgram = [[GLProgram alloc] init];
-    
-    self.mainProgram.vertexShader = [GLView stringWithFileContents:@"Vertex"];
-    self.mainProgram.fragmentShader = [GLView stringWithFileContents:@"Fragment"];
-    [self.mainProgram.attributeNames addObject:@"Position"];
-    [self.mainProgram.attributeNames addObject:@"TexCoord"];
-    [self.mainProgram.uniformNames addObject:@"Texture"];
-    [self.mainProgram.uniformNames addObject:@"Projection"];
-    [self.mainProgram.uniformNames addObject:@"ViewModel"];
-    
-    [self.mainProgram compile];
-    
-    self.stereoProgram = [[GLProgram alloc] init];
-    self.stereoProgram.vertexShader = [GLView stringWithFileContents:@"RegularVertex"];
-    self.stereoProgram.fragmentShader = [GLView stringWithFileContents:@"Stereoscopic"];
-    [self.stereoProgram.attributeNames addObject:@"Position"];
-    [self.stereoProgram.attributeNames addObject:@"TexCoord"];
-    [self.stereoProgram.uniformNames addObject:@"TextureLeft"];
-    [self.stereoProgram.uniformNames addObject:@"Projection"];
-    [self.stereoProgram.uniformNames addObject:@"Model"];
-    [self.stereoProgram.uniformNames addObject:@"TextureRight"];
-    [self.stereoProgram compile];
+    self.mainProgram = [[COBGLProgram alloc] initWithBundleVertexShaderFile:@"Vertex.glsl" fragmentShader:@"Fragment.glsl" attributes:@[@"position", @"uv"]];
+    self.stereoProgram = [[COBGLProgram alloc] initWithBundleVertexShaderFile:@"RegularVertex.glsl" fragmentShader:@"Stereoscopic.glsl" attributes:@[@"position", @"uv"]];
 }
 
 -(void)setupTextures
@@ -248,9 +228,11 @@
     
     _modelMatrix = GLKMatrix4Translate(_modelMatrix, 0, 0, -4);
     GLKMatrix4 viewModelMatrix = GLKMatrix4Multiply(_viewMatrix, _modelMatrix);
-    glUseProgram(self.mainProgram.programHandle);
-    glUniformMatrix4fv([self.mainProgram addressOfUniform:@"Projection"], 1, GL_FALSE, _projectionMatrix.m);
-    glUniformMatrix4fv([self.mainProgram addressOfUniform:@"ViewModel"], 1, GL_FALSE, viewModelMatrix.m);
+
+    [self.mainProgram use];
+    
+    glUniformMatrix4fv([self.mainProgram uniform:@"Projection"], 1, GL_FALSE, _projectionMatrix.m);
+    glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, viewModelMatrix.m);
     
     [self updateGeometry];
     
@@ -504,20 +486,20 @@
         rightMatrix = GLKMatrix4Translate(rightMatrix, -_cameraX , -_cameraY , -_cameraZ );
         
         
-        glUseProgram(self.mainProgram.programHandle);
+        [self.mainProgram use];
         
         glBindFramebufferOES(GL_FRAMEBUFFER_OES, offscreenFrameBufferLeft);
-        glUniformMatrix4fv([self.mainProgram addressOfUniform:@"ViewModel"], 1, GL_FALSE, GLKMatrix4Multiply(leftMatrix, _modelMatrix).m);
+        glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, GLKMatrix4Multiply(leftMatrix, _modelMatrix).m);
         [self renderScene];
         
         glBindFramebufferOES(GL_FRAMEBUFFER_OES, offscreenFrameBufferRight);
-        glUniformMatrix4fv([self.mainProgram addressOfUniform:@"ViewModel"], 1, GL_FALSE, GLKMatrix4Multiply(rightMatrix, _modelMatrix).m);
+        glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, GLKMatrix4Multiply(rightMatrix, _modelMatrix).m);
         [self renderScene];
         
         glBindFramebufferOES(GL_FRAMEBUFFER_OES, _frameBuffer);
         
         glViewport(0, 0, self.renderWidth, self.renderHeight);
-        glUseProgram(self.stereoProgram.programHandle);
+        [self.stereoProgram use];
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, offscreenTextureLeft);
@@ -528,14 +510,14 @@
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glUniform1i([self.stereoProgram addressOfUniform:@"TextureLeft"], 0);
-        glUniform1i([self.stereoProgram addressOfUniform:@"TextureRight"], 1);
+        glUniform1i([self.stereoProgram uniform:@"TextureLeft"], 0);
+        glUniform1i([self.stereoProgram uniform:@"TextureRight"], 1);
         
         glBindBuffer(GL_ARRAY_BUFFER, _buffers[BUFFER_VERTEX_SIMPLE]);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffers[BUFFER_INDEX_SIMPLE]);
         
-        GLuint _positionSlot = [self.stereoProgram addressofAttribute:@"Position"];
-        GLuint _textureSlot = [self.stereoProgram addressofAttribute:@"TexCoord"];
+        GLuint _positionSlot = [self.stereoProgram attribute:@"position"];
+        GLuint _textureSlot = [self.stereoProgram attribute:@"uv"];
         
         glEnableVertexAttribArray(_positionSlot);
         glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, Position));
@@ -543,8 +525,8 @@
         glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, TexCoord));
         
         
-        glUniformMatrix4fv([self.stereoProgram addressOfUniform:@"Model"], 1, GL_FALSE, GLKMatrix4Identity.m);
-        glUniformMatrix4fv([self.stereoProgram addressOfUniform:@"Projection"], 1, GL_FALSE, GLKMatrix4Identity.m);
+        glUniformMatrix4fv([self.stereoProgram uniform:@"Model"], 1, GL_FALSE, GLKMatrix4Identity.m);
+        glUniformMatrix4fv([self.stereoProgram uniform:@"Projection"], 1, GL_FALSE, GLKMatrix4Identity.m);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
     }
@@ -561,7 +543,7 @@
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glClearColor(0.75, 0.75, 0.8, 1.0);
     
-    glUseProgram(self.mainProgram.programHandle);
+    [self.mainProgram use];
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _texture);
@@ -570,13 +552,13 @@
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glUniform1i([self.mainProgram addressOfUniform:@"Texture"], 0);
+    glUniform1i([self.mainProgram uniform:@"Texture"], 0);
     
     glBindBuffer(GL_ARRAY_BUFFER, _buffers[BUFFER_VERTEX_WORLD]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffers[BUFFER_INDEX_WORLD]);
     
-    GLuint positionAttrib = [self.mainProgram addressofAttribute:@"Position"];
-    GLuint textureAttrib = [self.mainProgram addressofAttribute:@"TexCoord"];
+    GLuint positionAttrib = [self.mainProgram attribute:@"position"];
+    GLuint textureAttrib = [self.mainProgram attribute:@"uv"];
     
     glEnableVertexAttribArray(positionAttrib);
      glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, Position));

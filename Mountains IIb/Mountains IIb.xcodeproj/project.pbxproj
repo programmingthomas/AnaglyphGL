@@ -27,12 +27,12 @@
 		E972A67F170815CE00E77895 /* bigtexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A67E170815CE00E77895 /* bigtexture.png */; };
 		E972A68417081DE700E77895 /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E972A680170815DD00E77895 /* Fragment.glsl */; };
 		E972A68517081DE700E77895 /* Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E972A681170815DE00E77895 /* Vertex.glsl */; };
-		E972A6871709949000E77895 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A679170815C000E77895 /* GLProgram.m */; };
 		E972A6881709949000E77895 /* GLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A67B170815C000E77895 /* GLView.m */; };
 		E972A6891709949000E77895 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6391708129200E77895 /* AppDelegate.m */; };
 		E972A68A1709949000E77895 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6421708129200E77895 /* ViewController.m */; };
 		E972A68B1709949000E77895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6351708129100E77895 /* main.m */; };
 		E972A68C1709949000E77895 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6741708133300E77895 /* GameView.m */; };
+		E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,13 +74,13 @@
 		E972A669170812CC00E77895 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E972A6731708133300E77895 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		E972A6741708133300E77895 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
-		E972A678170815C000E77895 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
-		E972A679170815C000E77895 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
 		E972A67A170815C000E77895 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
 		E972A67B170815C000E77895 /* GLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLView.m; sourceTree = "<group>"; };
 		E972A67E170815CE00E77895 /* bigtexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigtexture.png; sourceTree = "<group>"; };
 		E972A680170815DD00E77895 /* Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fragment.glsl; sourceTree = "<group>"; };
 		E972A681170815DE00E77895 /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
+		E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COBGLProgram.h; sourceTree = "<group>"; };
+		E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COBGLProgram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,13 +144,13 @@
 		E972A62F1708129100E77895 /* Mountains IIb */ = {
 			isa = PBXGroup;
 			children = (
+				E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */,
+				E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */,
 				E94008831709DDB900314D67 /* RegularVertex.glsl */,
 				E94008841709DDB900314D67 /* Stereoscopic.glsl */,
 				E972A680170815DD00E77895 /* Fragment.glsl */,
 				E972A681170815DE00E77895 /* Vertex.glsl */,
 				E972A67E170815CE00E77895 /* bigtexture.png */,
-				E972A678170815C000E77895 /* GLProgram.h */,
-				E972A679170815C000E77895 /* GLProgram.m */,
 				E972A67A170815C000E77895 /* GLView.h */,
 				E972A67B170815C000E77895 /* GLView.m */,
 				E972A6381708129200E77895 /* AppDelegate.h */,
@@ -316,7 +316,7 @@
 			files = (
 				E972A68A1709949000E77895 /* ViewController.m in Sources */,
 				E972A68C1709949000E77895 /* GameView.m in Sources */,
-				E972A6871709949000E77895 /* GLProgram.m in Sources */,
+				E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */,
 				E972A6881709949000E77895 /* GLView.m in Sources */,
 				E972A6891709949000E77895 /* AppDelegate.m in Sources */,
 				E972A68B1709949000E77895 /* main.m in Sources */,

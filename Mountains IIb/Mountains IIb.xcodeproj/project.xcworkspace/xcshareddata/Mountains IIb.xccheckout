@@ -10,6 +10,8 @@
 	<string>Mountains IIb</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>565BE208B5625716C0D009BFC01F324FEFB9CCAC</key>
+		<string>https://github.com/programmingthomas/COBColorControl.git</string>
 		<key>BFB0FEB12637DB9B7FBF03BE4DEB29B2CCB0DBCB</key>
 		<string>https://github.com/programmingthomas/AnaglyphGL.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Mountains IIb/Mountains IIb.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>565BE208B5625716C0D009BFC01F324FEFB9CCAC</key>
+		<string>../../../../COBColorControl</string>
 		<key>BFB0FEB12637DB9B7FBF03BE4DEB29B2CCB0DBCB</key>
 		<string>../../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>BFB0FEB12637DB9B7FBF03BE4DEB29B2CCB0DBCB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>AnaglyphGL</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>565BE208B5625716C0D009BFC01F324FEFB9CCAC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>COBColorControl</string>
 		</dict>
 	</array>
 </dict>

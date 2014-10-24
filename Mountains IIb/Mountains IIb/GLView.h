@@ -21,23 +21,14 @@
 #include <OpenGLES/EAGL.h>
 #include <OpenGLES/ES1/gl.h>
 #include <OpenGLES/ES1/glext.h>
-#import "GLProgram.h"
+#import "COBGLProgram.h"
 
-/*typedef struct
-{
-    float Position[4];
-    float Normal[3];
-    float TexCoord[2];
-} Vertex;*/
-
-typedef struct
-{
-    float Position[4];
-    float TexCoord[2];
+typedef struct {
+    GLfloat Position[4];
+    GLfloat TexCoord[2];
 } Vertex;
 
-@interface GLView : UIView
-{
+@interface GLView : UIView {
     CAEAGLLayer *_eaglLayer;
     EAGLContext *_context;
     
