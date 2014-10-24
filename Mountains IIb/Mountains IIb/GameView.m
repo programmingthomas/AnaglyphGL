@@ -231,7 +231,7 @@
 
     [self.mainProgram use];
     
-    glUniformMatrix4fv([self.mainProgram uniform:@"Projection"], 1, GL_FALSE, _projectionMatrix.m);
+    glUniformMatrix4fv(self.mainProgram.projectionMatrix, 1, GL_FALSE, _projectionMatrix.m);
     glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, viewModelMatrix.m);
     
     [self updateGeometry];
@@ -526,7 +526,7 @@
         
         
         glUniformMatrix4fv([self.stereoProgram uniform:@"Model"], 1, GL_FALSE, GLKMatrix4Identity.m);
-        glUniformMatrix4fv([self.stereoProgram uniform:@"Projection"], 1, GL_FALSE, GLKMatrix4Identity.m);
+        glUniformMatrix4fv(self.stereoProgram.projectionMatrix, 1, GL_FALSE, GLKMatrix4Identity.m);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
     }

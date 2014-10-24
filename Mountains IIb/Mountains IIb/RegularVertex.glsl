@@ -17,7 +17,7 @@
 attribute lowp vec2 uv;
 attribute vec4 position;
 
-uniform mat4 Projection;
+uniform mat4 projectionMatrix;
 uniform mat4 Model;
 
 
@@ -25,6 +25,6 @@ varying vec2 uvOut;
 
 void main(void)
 {
-    gl_Position = Projection * Model * position;
+    gl_Position = projectionMatrix * Model * position;
     uvOut = uv;
 }
