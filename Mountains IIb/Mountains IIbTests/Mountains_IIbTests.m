@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in Mountains IIbTests");
+    XCTFail(@"Unit tests are not implemented yet in Mountains IIbTests");
 }
 
 @end

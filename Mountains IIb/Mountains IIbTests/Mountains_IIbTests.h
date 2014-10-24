@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Programming Thomas. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface Mountains_IIbTests : SenTestCase
+@interface Mountains_IIbTests : XCTestCase
 
 @end
