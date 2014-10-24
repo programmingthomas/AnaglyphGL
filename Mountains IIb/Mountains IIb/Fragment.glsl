@@ -15,9 +15,9 @@
  */
 
 varying lowp vec2 uvOut;
-uniform sampler2D Texture;
+uniform sampler2D texture0;
 
 void main()
 {
-    gl_FragColor = texture2D(Texture, uvOut);
+    gl_FragColor = texture2D(texture0, uvOut);
 }

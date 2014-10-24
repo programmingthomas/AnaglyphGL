@@ -14,13 +14,13 @@
  limitations under the License.
  */
 
-uniform sampler2D TextureLeft;
-uniform sampler2D TextureRight;
+uniform sampler2D texture0;
+uniform sampler2D texture1;
 
 varying lowp vec2 uvOut;
 
 void main (void) {
-    lowp vec4 left = texture2D(TextureLeft, uvOut);
-    lowp vec4 right = texture2D(TextureRight, uvOut);
+    lowp vec4 left = texture2D(texture0, uvOut);
+    lowp vec4 right = texture2D(texture1, uvOut);
     gl_FragColor = vec4(left.r, right.g, right.b, 1.0);
 }

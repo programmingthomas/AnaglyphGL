@@ -510,8 +510,8 @@
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glUniform1i([self.stereoProgram uniform:@"TextureLeft"], 0);
-        glUniform1i([self.stereoProgram uniform:@"TextureRight"], 1);
+        glUniform1i(self.stereoProgram.texture0, 0);
+        glUniform1i(self.stereoProgram.texture1, 1);
         
         glBindBuffer(GL_ARRAY_BUFFER, _buffers[BUFFER_VERTEX_SIMPLE]);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffers[BUFFER_INDEX_SIMPLE]);
@@ -552,7 +552,7 @@
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glUniform1i([self.mainProgram uniform:@"Texture"], 0);
+    glUniform1i(self.mainProgram.texture0, 0);
     
     glBindBuffer(GL_ARRAY_BUFFER, _buffers[BUFFER_VERTEX_WORLD]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffers[BUFFER_INDEX_WORLD]);
