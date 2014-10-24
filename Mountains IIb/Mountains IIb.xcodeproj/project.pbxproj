@@ -144,15 +144,12 @@
 		E972A62F1708129100E77895 /* Mountains IIb */ = {
 			isa = PBXGroup;
 			children = (
+				E972A67E170815CE00E77895 /* bigtexture.png */,
 				E9E6BB1719FADF1700BD5D92 /* Model + Utilities */,
 				E9E6BB1619FADF0E00BD5D92 /* View Controllers */,
 				E9E6BB1819FADF2B00BD5D92 /* Shaders */,
-				E972A67E170815CE00E77895 /* bigtexture.png */,
-				E972A67A170815C000E77895 /* GLView.h */,
-				E972A67B170815C000E77895 /* GLView.m */,
+				E9E6BB1919FADFA800BD5D92 /* Views */,
 				E972A6301708129100E77895 /* Supporting Files */,
-				E972A6731708133300E77895 /* GameView.h */,
-				E972A6741708133300E77895 /* GameView.m */,
 			);
 			path = "Mountains IIb";
 			sourceTree = "<group>";
@@ -220,6 +217,17 @@
 				E972A681170815DE00E77895 /* Vertex.glsl */,
 			);
 			name = Shaders;
+			sourceTree = "<group>";
+		};
+		E9E6BB1919FADFA800BD5D92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E972A67A170815C000E77895 /* GLView.h */,
+				E972A67B170815C000E77895 /* GLView.m */,
+				E972A6731708133300E77895 /* GameView.h */,
+				E972A6741708133300E77895 /* GameView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
