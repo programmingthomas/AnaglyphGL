@@ -516,8 +516,8 @@
         glBindBuffer(GL_ARRAY_BUFFER, _buffers[BUFFER_VERTEX_SIMPLE]);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffers[BUFFER_INDEX_SIMPLE]);
         
-        GLuint _positionSlot = [self.stereoProgram attribute:@"position"];
-        GLuint _textureSlot = [self.stereoProgram attribute:@"uv"];
+        GLuint _positionSlot = self.stereoProgram.position;
+        GLuint _textureSlot = self.stereoProgram.uv;
         
         glEnableVertexAttribArray(_positionSlot);
         glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, Position));
@@ -557,8 +557,8 @@
     glBindBuffer(GL_ARRAY_BUFFER, _buffers[BUFFER_VERTEX_WORLD]);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _buffers[BUFFER_INDEX_WORLD]);
     
-    GLuint positionAttrib = [self.mainProgram attribute:@"position"];
-    GLuint textureAttrib = [self.mainProgram attribute:@"uv"];
+    GLuint positionAttrib = self.mainProgram.position;
+    GLuint textureAttrib = self.mainProgram.uv;
     
     glEnableVertexAttribArray(positionAttrib);
      glVertexAttribPointer(positionAttrib, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, Position));
