@@ -16,7 +16,6 @@
 		E972A63C1708129200E77895 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63B1708129200E77895 /* Default.png */; };
 		E972A63E1708129200E77895 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63D1708129200E77895 /* Default@2x.png */; };
 		E972A6401708129200E77895 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63F1708129200E77895 /* Default-568h@2x.png */; };
-		E972A6461708129200E77895 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E972A6441708129200E77895 /* ViewController.xib */; };
 		E972A6521708129500E77895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6291708129100E77895 /* UIKit.framework */; };
 		E972A6531708129500E77895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62B1708129100E77895 /* Foundation.framework */; };
 		E972A65B1708129500E77895 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E972A6591708129500E77895 /* InfoPlist.strings */; };
@@ -33,6 +32,7 @@
 		E972A68B1709949000E77895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6351708129100E77895 /* main.m */; };
 		E972A68C1709949000E77895 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E972A6741708133300E77895 /* GameView.mm */; };
 		E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */; };
+		E9E6BB1C19FAE86E00BD5D92 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1B19FAE86E00BD5D92 /* Game.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +63,6 @@
 		E972A63F1708129200E77895 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E972A6411708129200E77895 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E972A6421708129200E77895 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E972A6451708129200E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		E972A64F1708129400E77895 /* Mountains IIbTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mountains IIbTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E972A6581708129500E77895 /* Mountains IIbTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mountains IIbTests-Info.plist"; sourceTree = "<group>"; };
 		E972A65A1708129500E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -81,6 +80,8 @@
 		E972A681170815DE00E77895 /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
 		E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COBGLProgram.h; sourceTree = "<group>"; };
 		E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COBGLProgram.m; sourceTree = "<group>"; };
+		E9E6BB1A19FAE86E00BD5D92 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		E9E6BB1B19FAE86E00BD5D92 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,7 +195,6 @@
 				E972A6391708129200E77895 /* AppDelegate.m */,
 				E972A6411708129200E77895 /* ViewController.h */,
 				E972A6421708129200E77895 /* ViewController.m */,
-				E972A6441708129200E77895 /* ViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -226,6 +226,8 @@
 				E972A67B170815C000E77895 /* GLView.mm */,
 				E972A6731708133300E77895 /* GameView.h */,
 				E972A6741708133300E77895 /* GameView.mm */,
+				E9E6BB1A19FAE86E00BD5D92 /* Game.h */,
+				E9E6BB1B19FAE86E00BD5D92 /* Game.mm */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -308,7 +310,6 @@
 				E972A63C1708129200E77895 /* Default.png in Resources */,
 				E972A63E1708129200E77895 /* Default@2x.png in Resources */,
 				E972A6401708129200E77895 /* Default-568h@2x.png in Resources */,
-				E972A6461708129200E77895 /* ViewController.xib in Resources */,
 				E972A67F170815CE00E77895 /* bigtexture.png in Resources */,
 				E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */,
 				E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */,
@@ -351,6 +352,7 @@
 				E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */,
 				E972A6881709949000E77895 /* GLView.mm in Sources */,
 				E972A6891709949000E77895 /* AppDelegate.m in Sources */,
+				E9E6BB1C19FAE86E00BD5D92 /* Game.mm in Sources */,
 				E972A68B1709949000E77895 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,14 +382,6 @@
 				E972A6331708129100E77895 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E972A6441708129200E77895 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E972A6451708129200E77895 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 		E972A6591708129500E77895 /* InfoPlist.strings */ = {

@@ -14,8 +14,8 @@
  limitations under the License.
  */
 
-@import UIKit;
+#import <GLKit/GLKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : GLKViewController
 
 @end
