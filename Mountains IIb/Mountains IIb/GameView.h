@@ -16,7 +16,9 @@
 
 
 #import "GLView.h"
-#import <GLKit/GLKit.h>
+
+#import "COBGLProgram.h"
+
 
 const int WORLD_WIDTH = 128;
 const int WORLD_LENGTH = 128;
