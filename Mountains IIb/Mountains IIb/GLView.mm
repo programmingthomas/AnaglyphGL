@@ -20,18 +20,18 @@
 
 #pragma mark - UIView init
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.antiAliasEnabled = false;
         self.paused = true;
+        [self setupGL];
+        [self startGL];
     }
     return self;
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.antiAliasEnabled = false;
@@ -44,15 +44,13 @@
 
 #pragma mark - Layer class
 
-+(Class)layerClass
-{
++ (Class)layerClass {
     return [CAEAGLLayer class];
 }
 
 #pragma mark - Setup OpenGL
 
--(void)setupGL
-{
+- (void)setupGL {
     [self setupLayer];
     [self setupContext];
     if (!self.antiAliasEnabled) [self setupDepthbuffer:CGSizeMake(self.frame.size.width * self.layer.contentsScale, self.frame.size.height * self.layer.contentsScale)];
