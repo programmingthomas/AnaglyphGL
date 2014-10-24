@@ -232,7 +232,7 @@
     [self.mainProgram use];
     
     glUniformMatrix4fv(self.mainProgram.projectionMatrix, 1, GL_FALSE, _projectionMatrix.m);
-    glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, viewModelMatrix.m);
+    glUniformMatrix4fv(self.mainProgram.modelViewMatrix, 1, GL_FALSE, viewModelMatrix.m);
     
     [self updateGeometry];
     
@@ -489,11 +489,11 @@
         [self.mainProgram use];
         
         glBindFramebufferOES(GL_FRAMEBUFFER_OES, offscreenFrameBufferLeft);
-        glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, GLKMatrix4Multiply(leftMatrix, _modelMatrix).m);
+        glUniformMatrix4fv(self.mainProgram.modelViewMatrix, 1, GL_FALSE, GLKMatrix4Multiply(leftMatrix, _modelMatrix).m);
         [self renderScene];
         
         glBindFramebufferOES(GL_FRAMEBUFFER_OES, offscreenFrameBufferRight);
-        glUniformMatrix4fv([self.mainProgram uniform:@"ViewModel"], 1, GL_FALSE, GLKMatrix4Multiply(rightMatrix, _modelMatrix).m);
+        glUniformMatrix4fv(self.mainProgram.modelViewMatrix, 1, GL_FALSE, GLKMatrix4Multiply(rightMatrix, _modelMatrix).m);
         [self renderScene];
         
         glBindFramebufferOES(GL_FRAMEBUFFER_OES, _frameBuffer);
@@ -525,7 +525,7 @@
         glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (const GLvoid*)offsetof(Vertex, TexCoord));
         
         
-        glUniformMatrix4fv([self.stereoProgram uniform:@"Model"], 1, GL_FALSE, GLKMatrix4Identity.m);
+        glUniformMatrix4fv(self.stereoProgram.modelViewMatrix, 1, GL_FALSE, GLKMatrix4Identity.m);
         glUniformMatrix4fv(self.stereoProgram.projectionMatrix, 1, GL_FALSE, GLKMatrix4Identity.m);
         
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);

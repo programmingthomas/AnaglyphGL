@@ -17,14 +17,14 @@
 attribute vec4 position;
 
 uniform mat4 projectionMatrix;
-uniform mat4 ViewModel;
+uniform mat4 modelViewMatrix;
 
 attribute vec2 uv;
 varying vec2 uvOut;
 
 void main()
 {
-    gl_Position = projectionMatrix * ViewModel * position;
+    gl_Position = projectionMatrix * modelViewMatrix * position;
     
     uvOut = uv;
 }
