@@ -21,10 +21,10 @@ uniform mat4 Projection;
 uniform mat4 Model;
 
 
-varying vec2 TexCoordOut;
+varying vec2 uvOut;
 
 void main(void)
 {
     gl_Position = Projection * Model * position;
-    TexCoordOut = uv;
+    uvOut = uv;
 }

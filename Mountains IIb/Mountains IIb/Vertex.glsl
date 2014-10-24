@@ -20,11 +20,11 @@ uniform mat4 Projection;
 uniform mat4 ViewModel;
 
 attribute vec2 uv;
-varying vec2 TexCoordOut;
+varying vec2 uvOut;
 
 void main()
 {
     gl_Position = Projection * ViewModel * position;
     
-    TexCoordOut = uv;
+    uvOut = uv;
 }

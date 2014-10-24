@@ -14,10 +14,10 @@
  limitations under the License.
  */
 
-varying lowp vec2 TexCoordOut;
+varying lowp vec2 uvOut;
 uniform sampler2D Texture;
 
 void main()
 {
-    gl_FragColor = texture2D(Texture, TexCoordOut);
+    gl_FragColor = texture2D(Texture, uvOut);
 }

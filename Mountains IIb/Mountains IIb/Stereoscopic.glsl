@@ -17,17 +17,10 @@
 uniform sampler2D TextureLeft;
 uniform sampler2D TextureRight;
 
-varying lowp vec2 TexCoordOut;
-void main (void)
-{
-    //The commented lines are an earlier version that I was working on
-    //gl_FragColor = ConstantColor;
-    //lowp vec4 left = texture2D(TextureLeft, TexCoordOut) * mat4(0.399, 0.687, 0.214, 0, 0,0.25,0,0, 0,0,0,0, 0,0,0,0.5);
-    //lowp vec4 right = texture2D(TextureRight, TexCoordOut) * mat4(0,0,0,0, 0,0.25,0,0, 0.399, 0.687, 0.214,0, 0,0,0,0.5);
-    //lowp vec4 left = texture2D(TextureLeft, TexCoordOut) + vec4(1.0,0,0,0);
-    //lowp vec4 right = texture2D(TextureRight, TexCoordOut) + vec4(0,0,1.0,0);
-    //gl_FragColor = vec4(left.r, 0, right.b, 1.0);
-    lowp vec4 left = texture2D(TextureLeft, TexCoordOut);
-    lowp vec4 right = texture2D(TextureRight, TexCoordOut);
+varying lowp vec2 uvOut;
+
+void main (void) {
+    lowp vec4 left = texture2D(TextureLeft, uvOut);
+    lowp vec4 right = texture2D(TextureRight, uvOut);
     gl_FragColor = vec4(left.r, right.g, right.b, 1.0);
 }
