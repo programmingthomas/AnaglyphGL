@@ -14,8 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@import Foundation;
-@import GLKit;
+#import <GLKit/GLKit.h>
 
 /**
  This class provides an easy way to compile an OpenGL shader and access its attributes and uniforms

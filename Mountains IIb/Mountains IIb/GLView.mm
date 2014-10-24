@@ -232,8 +232,8 @@
 }
 
 + (GLuint)setupTextureFromImage:(CGImageRef)spriteImage {
-    size_t width = CGImageGetWidth(spriteImage);
-    size_t height = CGImageGetHeight(spriteImage);
+    GLsizei width = (GLsizei)CGImageGetWidth(spriteImage);
+    GLsizei height = (GLsizei)CGImageGetHeight(spriteImage);
     GLubyte * spriteData = (GLubyte *) calloc(width*height*4, sizeof(GLubyte));
     
     CGContextRef spriteContext = CGBitmapContextCreate(spriteData, width, height, 8, width*4,
@@ -277,8 +277,8 @@
     glViewport(0, 0, size.width, size.height);
     [self render];
     
-    NSInteger x = 0, y = 0, width = bWidth, height = bHeight;
-    NSInteger dataLength = width * height * 4;
+    GLuint x = 0, y = 0, width = bWidth, height = bHeight;
+    GLuint dataLength = width * height * 4;
     GLubyte *data = (GLubyte*)malloc(dataLength * sizeof(GLubyte));
     glPixelStorei(GL_PACK_ALIGNMENT, 4);
     glReadPixels(x, y, width, height, GL_RGBA, GL_UNSIGNED_BYTE, data);
