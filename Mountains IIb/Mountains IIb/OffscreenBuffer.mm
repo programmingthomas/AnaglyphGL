@@ -1,4 +1,4 @@
-// OffscreenBuffer.m
+// OffscreenBuffer.mm
 //
 // Copyright 2014 Thomas Denney
 //
