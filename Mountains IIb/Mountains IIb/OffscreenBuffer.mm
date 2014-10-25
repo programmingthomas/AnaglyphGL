@@ -61,3 +61,8 @@ OffscreenBuffer::~OffscreenBuffer() {
     glDeleteFramebuffers(1, &frameBuffer);
     glDeleteTextures(1, &texture);
 }
+
+void OffscreenBuffer::Bind() {
+    glBindFramebuffer(GL_FRAMEBUFFER, frameBuffer);
+    glViewport(0, 0, width, height);
+}

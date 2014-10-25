@@ -24,4 +24,6 @@ public:
     
     OffscreenBuffer(GLsizei width, GLsizei height);
     ~OffscreenBuffer();
+    
+    void Bind();
 };

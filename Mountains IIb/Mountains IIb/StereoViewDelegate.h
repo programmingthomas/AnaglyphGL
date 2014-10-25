@@ -7,12 +7,16 @@
 //
 
 #import <GLKit/GLKit.h>
+#import "COBGLProgram.h"
 
 @interface StereoViewDelegate : NSObject<GLKViewDelegate>
 
 @property (nonatomic, readonly, weak) EAGLContext * context;
 @property (nonatomic, readonly) GLsizei width;
 @property (nonatomic, readonly) GLsizei height;
+
+@property (nonatomic) id<GLKViewDelegate> leftEyeRenderer;
+@property (nonatomic) id<GLKViewDelegate> rightEyeRenderer;
 
 - (instancetype)initWithContext:(EAGLContext*)context width:(GLsizei)width height:(GLsizei)height;
 
