@@ -16,7 +16,11 @@ typedef NS_ENUM(NSUInteger, CameraEye) {
 
 @interface GameRenderer : NSObject<GLKViewDelegate>
 
-@property GLKMatrix4 cameraOffset;
+@property (nonatomic) CameraEye eye;
+@property (nonatomic) GLfloat cameraOffset;
+
+@property (readonly)GLKMatrix4 cameraOffsetMatrix;
+
 @property (nonatomic, strong, readonly) Game * game;
 
 - (instancetype)initWithGame:(Game*)game eye:(CameraEye)eye;

@@ -8,6 +8,8 @@
 
 #import "StereoViewDelegate.h"
 #import "OffscreenBuffer.h"
+//For Vertex Arrays
+#import <OpenGLES/ES2/glext.h>
 
 #pragma mark - Stereoscopic shader
 
@@ -41,15 +43,16 @@ GLfloat rectangleVertexData[] = {
     -1, 1,  0,   0, 1,
     1,  1,  0,   1, 1,
     -1,-1,  0,   0, 0,
+    1,  1,  0,   1, 1,
+    -1,-1,  0,   0, 0,
     1, -1,  0,   1, 0
 };
-
-GLushort rectangleIndexData[] = {0, 1, 2, 1, 2, 3};
 
 @interface StereoViewDelegate () {
     OffscreenBuffer * _leftBuffer, * _rightBuffer;
     
-    GLuint _rectangleArrayBuffer, _rectangleElementBuffer;
+    GLuint _rectangleArrayBuffer;
+    GLuint _rectangleVertexArray;
 }
 
 @property COBGLProgram * stereoscopicProgram;
@@ -107,19 +110,26 @@ GLushort rectangleIndexData[] = {0, 1, 2, 1, 2, 3};
 #pragma mark - Stereoscopic buffer management
 
 - (void)_createStereoscopicBuffers {
+    glGenVertexArraysOES(1, &_rectangleVertexArray);
+    glBindVertexArrayOES(_rectangleVertexArray);
     glGenBuffers(1, &_rectangleArrayBuffer);
-    glGenBuffers(1, &_rectangleElementBuffer);
     
     glBindBuffer(GL_ARRAY_BUFFER, _rectangleArrayBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(rectangleVertexData), rectangleVertexData, GL_STATIC_DRAW);
     
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _rectangleElementBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(rectangleIndexData), rectangleIndexData, GL_STATIC_DRAW);
+    GLuint _positionSlot = self.stereoscopicProgram.position;
+    GLuint _textureSlot = self.stereoscopicProgram.uv;
+    
+    glEnableVertexAttribArray(_positionSlot);
+    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(0));
+    glEnableVertexAttribArray(_textureSlot);
+    glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(sizeof(GLfloat) * 3));
+    glBindVertexArrayOES(0);
 }
 
 - (void)_deleteStereoscopicBuffers {
     glDeleteBuffers(1, &_rectangleArrayBuffer);
-    glDeleteBuffers(1, &_rectangleElementBuffer);
+    glDeleteVertexArraysOES(1, &_rectangleVertexArray);
 }
 
 #pragma mark - Stereoscopic rendering
@@ -157,21 +167,14 @@ GLushort rectangleIndexData[] = {0, 1, 2, 1, 2, 3};
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
     
-    glBindBuffer(GL_ARRAY_BUFFER, _rectangleArrayBuffer);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _rectangleElementBuffer);
+    glBindVertexArrayOES(_rectangleVertexArray);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
     
-    GLuint _positionSlot = self.stereoscopicProgram.position;
-    GLuint _textureSlot = self.stereoscopicProgram.uv;
-    
-    glEnableVertexAttribArray(_positionSlot);
-    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(0));
-    glEnableVertexAttribArray(_textureSlot);
-    glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(sizeof(GLfloat) * 3));
     
     
 //    glUniformMatrix4fv(self.stereoProgram.modelViewMatrix, 1, GL_FALSE, GLKMatrix4Identity.m);
     
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+//    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 }
 
 @end

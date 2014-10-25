@@ -14,13 +14,28 @@
     self = [super init];
     if (self) {
         _game = game;
-        self.cameraOffset = GLKMatrix4MakeTranslation(0.05 * (eye == CameraEyeLeft ? -1 : 1), 0, 0);
+        self.eye = eye;
+        self.cameraOffset = 0.05;
     }
     return self;
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
-    [self.game drawWithCameraOffsetMatrix:self.cameraOffset];
+    [self.game drawWithCameraOffsetMatrix:self.cameraOffsetMatrix];
+}
+
+- (void)setEye:(CameraEye)eye {
+    _eye = eye;
+    [self _updateCameraOffsetMatrix];
+}
+
+- (void)setCameraOffset:(GLfloat)cameraOffset {
+    _cameraOffset = cameraOffset;
+    [self _updateCameraOffsetMatrix];
+}
+
+- (void)_updateCameraOffsetMatrix {
+    _cameraOffsetMatrix = GLKMatrix4MakeTranslation(self.cameraOffset * (self.eye == CameraEyeLeft ? -1 : 1), 0, 0);
 }
 
 @end

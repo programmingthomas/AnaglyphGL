@@ -19,6 +19,8 @@
 #import "Game.h"
 #import "GameRenderer.h"
 
+BOOL const Stereoscopic3D = YES;
+
 @interface ViewController ()
 
 @property StereoViewDelegate * stereoViewDelegate;
@@ -58,15 +60,26 @@
     self.stereoViewDelegate.leftEyeRenderer = self.leftEye;
     self.stereoViewDelegate.rightEyeRenderer = self.rightEye;
     
-    glkView.delegate = self.stereoViewDelegate;
+    if (Stereoscopic3D) {
+        glkView.delegate = self.stereoViewDelegate;
+    }
+    
     self.preferredFramesPerSecond = 60;
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
 }
 
 - (void)update {
     GLfloat ratio = CGRectGetWidth(self.view.frame) / CGRectGetHeight(self.view.frame);
     self.game.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), ratio, 0.01f, 100.0f);
-    self.game.modelMatrix = GLKMatrix4Translate(GLKMatrix4MakeRotation((float)fmod(CFAbsoluteTimeGetCurrent(), 2.0 * M_PI), 0, 0, 1), 0, 0, -4);
+    self.game.modelMatrix = GLKMatrix4Translate(GLKMatrix4MakeRotation((float)fmod(CFAbsoluteTimeGetCurrent(), 2.0 * M_PI), 0, 0, 1), 0, 0, -10 + 5 * (float)cos(CFAbsoluteTimeGetCurrent()));
     self.game.viewMatrix = GLKMatrix4Identity;
+}
+
+- (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
+    [self.game drawWithCameraOffsetMatrix:GLKMatrix4Identity];
 }
 
 @end

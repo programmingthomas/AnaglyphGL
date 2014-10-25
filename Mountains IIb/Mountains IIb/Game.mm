@@ -7,6 +7,8 @@
 //
 
 #import <iostream>
+//For Vertex Arrays
+#import <OpenGLES/ES2/glext.h>
 
 #import "Game.h"
 
@@ -42,14 +44,17 @@ GLfloat cubeVertexData[] = {
     -0.5,   -0.5,   0,      0,      0,
     0.5,    -0.5,   0,      0.125,  0,
     -0.5,   0.5,    0,      0,      0.33,
+    
+    0.5,    -0.5,   0,      0.125,  0,
+    -0.5,   0.5,    0,      0,      0.33,
     0.5,    0.5,    0,      0.125,  0.33
 };
 
-GLushort cubeIndexData[] = {0, 1, 2, 1, 2, 3};
+//GLushort cubeIndexData[] = {0, 1, 2, 1, 2, 3};
 
 @interface Game () {
-    GLuint _cubeVertexBuffer;
-    GLuint _cubeVertexArray, _cubeIndexArray;
+    GLuint _cubeVertexArray;
+    GLuint _cubeVertexBuffer/*, _cubeIndexBuffer*/;
 }
 
 @end
@@ -94,19 +99,30 @@ GLushort cubeIndexData[] = {0, 1, 2, 1, 2, 3};
 #pragma mark - Vertex data management
 
 - (void)_loadVertexData {
-    glGenBuffers(1, &_cubeVertexArray);
-    glGenBuffers(1, &_cubeIndexArray);
+    glGenVertexArraysOES(1, &_cubeVertexArray);
+    glGenBuffers(1, &_cubeVertexBuffer);
+//    glGenBuffers(1, &_cubeIndexBuffer);
     
-    glBindBuffer(GL_ARRAY_BUFFER, _cubeVertexArray);
+    glBindVertexArrayOES(_cubeVertexArray);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, _cubeVertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertexData), cubeVertexData, GL_STATIC_DRAW);
     
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _cubeIndexArray);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cubeIndexData), cubeIndexData, GL_STATIC_DRAW);
+    GLuint _positionSlot = self.program.position;
+    GLuint _textureSlot = self.program.uv;
+    
+    glEnableVertexAttribArray(_positionSlot);
+    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(0));
+    glEnableVertexAttribArray(_textureSlot);
+    glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(sizeof(GLfloat) * 3));
+    
+    glBindVertexArrayOES(0);
 }
 
 - (void)_deleteVertexData {
-    glDeleteBuffers(1, &_cubeVertexArray);
-    glDeleteBuffers(1, &_cubeIndexArray);
+    glDeleteBuffers(1, &_cubeVertexBuffer);
+//    glDeleteBuffers(1, &_cubeVertexBuffer);
+    glDeleteVertexArraysOES(1, &_cubeVertexArray);
 }
 
 #pragma mark - Rendering
@@ -125,20 +141,12 @@ GLushort cubeIndexData[] = {0, 1, 2, 1, 2, 3};
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _texture);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glUniform1i(self.program.texture0, 0);
     
-    glBindBuffer(GL_ARRAY_BUFFER, _cubeVertexArray);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _cubeIndexArray);
-    
-    GLuint _positionSlot = self.program.position;
-    GLuint _textureSlot = self.program.uv;
-    
-    glEnableVertexAttribArray(_positionSlot);
-    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(0));
-    glEnableVertexAttribArray(_textureSlot);
-    glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(sizeof(GLfloat) * 3));
-    
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+    glBindVertexArrayOES(_cubeVertexArray);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
 }
 
 @end
