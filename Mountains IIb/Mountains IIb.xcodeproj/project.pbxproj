@@ -32,6 +32,8 @@
 		E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */; };
 		E9E6BB1C19FAE86E00BD5D92 /* StereoViewDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */; };
 		E9E6BB1F19FAEAB100BD5D92 /* OffscreenBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */; };
+		E9E6BB2319FB7A5D00BD5D92 /* GameRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB2219FB7A5D00BD5D92 /* GameRenderer.mm */; };
+		E9E6BB2619FB7AD900BD5D92 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB2519FB7AD900BD5D92 /* Game.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,10 @@
 		E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoViewDelegate.mm; sourceTree = "<group>"; };
 		E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffscreenBuffer.h; sourceTree = "<group>"; };
 		E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OffscreenBuffer.mm; sourceTree = "<group>"; };
+		E9E6BB2119FB7A5D00BD5D92 /* GameRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRenderer.h; sourceTree = "<group>"; };
+		E9E6BB2219FB7A5D00BD5D92 /* GameRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameRenderer.mm; sourceTree = "<group>"; };
+		E9E6BB2419FB7AD900BD5D92 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		E9E6BB2519FB7AD900BD5D92 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 		E972A62F1708129100E77895 /* Mountains IIb */ = {
 			isa = PBXGroup;
 			children = (
+				E9E6BB2019FB7A4300BD5D92 /* Game Rendering */,
 				E972A67E170815CE00E77895 /* bigtexture.png */,
 				E9E6BB1719FADF1700BD5D92 /* Utility */,
 				E9E6BB1619FADF0E00BD5D92 /* View Controllers */,
@@ -229,6 +236,17 @@
 				E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		E9E6BB2019FB7A4300BD5D92 /* Game Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				E9E6BB2119FB7A5D00BD5D92 /* GameRenderer.h */,
+				E9E6BB2219FB7A5D00BD5D92 /* GameRenderer.mm */,
+				E9E6BB2419FB7AD900BD5D92 /* Game.h */,
+				E9E6BB2519FB7AD900BD5D92 /* Game.mm */,
+			);
+			name = "Game Rendering";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,9 +367,11 @@
 				E972A68C1709949000E77895 /* GameView.mm in Sources */,
 				E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */,
 				E972A6881709949000E77895 /* GLView.mm in Sources */,
+				E9E6BB2619FB7AD900BD5D92 /* Game.mm in Sources */,
 				E972A6891709949000E77895 /* AppDelegate.m in Sources */,
 				E9E6BB1C19FAE86E00BD5D92 /* StereoViewDelegate.mm in Sources */,
 				E972A68B1709949000E77895 /* main.m in Sources */,
+				E9E6BB2319FB7A5D00BD5D92 /* GameRenderer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

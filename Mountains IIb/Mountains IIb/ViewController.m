@@ -16,11 +16,16 @@
 
 #import "ViewController.h"
 #import "StereoViewDelegate.h"
+#import "Game.h"
+#import "GameRenderer.h"
 
 @interface ViewController ()
 
-@property StereoViewDelegate * game;
+@property StereoViewDelegate * stereoViewDelegate;
 @property EAGLContext * context;
+@property Game * game;
+@property GameRenderer * leftEye;
+@property GameRenderer * rightEye;
 
 @end
 
@@ -31,17 +36,24 @@
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     [EAGLContext setCurrentContext:self.context];
     
-    
     GLKView * glkView = (GLKView*)self.view;
     glkView.context = self.context;
     glkView.drawableDepthFormat = GLKViewDrawableDepthFormat16;
     
+    self.game = [Game new];
+    
     GLsizei width = CGRectGetWidth(glkView.frame) * glkView.contentScaleFactor;
     GLsizei height = CGRectGetHeight(glkView.frame) * glkView.contentScaleFactor;
     
-    self.game = [[StereoViewDelegate alloc] initWithContext:self.context width:width height:height];
+    self.stereoViewDelegate = [[StereoViewDelegate alloc] initWithContext:self.context width:width height:height];
+
+    self.leftEye = [[GameRenderer alloc] initWithGame:self.game eye:CameraEyeLeft];
+    self.rightEye = [[GameRenderer alloc] initWithGame:self.game eye:CameraEyeRight];
     
-    glkView.delegate = self.game;
+    self.stereoViewDelegate.leftEyeRenderer = self.leftEye;
+    self.stereoViewDelegate.rightEyeRenderer = self.rightEye;
+    
+    glkView.delegate = self.stereoViewDelegate;
     self.preferredFramesPerSecond = 60;
 }
 
