@@ -29,12 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    [EAGLContext setCurrentContext:self.context];
     
-    self.game = [[Game alloc] initWithContext:self.context];
     
     GLKView * glkView = (GLKView*)self.view;
     glkView.context = self.context;
     
+    GLsizei width = CGRectGetWidth(glkView.frame) * glkView.contentScaleFactor;
+    GLsizei height = CGRectGetHeight(glkView.frame) * glkView.contentScaleFactor;
+    
+    self.game = [[Game alloc] initWithContext:self.context width:width height:height];
+    
+    glkView.delegate = self.game;
     self.preferredFramesPerSecond = 60;
 }
 

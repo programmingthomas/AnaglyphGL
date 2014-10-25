@@ -33,6 +33,7 @@
 		E972A68C1709949000E77895 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E972A6741708133300E77895 /* GameView.mm */; };
 		E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */; };
 		E9E6BB1C19FAE86E00BD5D92 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1B19FAE86E00BD5D92 /* Game.mm */; };
+		E9E6BB1F19FAEAB100BD5D92 /* OffscreenBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COBGLProgram.m; sourceTree = "<group>"; };
 		E9E6BB1A19FAE86E00BD5D92 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
 		E9E6BB1B19FAE86E00BD5D92 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
+		E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffscreenBuffer.h; sourceTree = "<group>"; };
+		E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OffscreenBuffer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +231,8 @@
 				E972A6741708133300E77895 /* GameView.mm */,
 				E9E6BB1A19FAE86E00BD5D92 /* Game.h */,
 				E9E6BB1B19FAE86E00BD5D92 /* Game.mm */,
+				E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */,
+				E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -348,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E972A68A1709949000E77895 /* ViewController.m in Sources */,
+				E9E6BB1F19FAEAB100BD5D92 /* OffscreenBuffer.mm in Sources */,
 				E972A68C1709949000E77895 /* GameView.mm in Sources */,
 				E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */,
 				E972A6881709949000E77895 /* GLView.mm in Sources */,

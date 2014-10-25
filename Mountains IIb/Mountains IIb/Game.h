@@ -11,7 +11,9 @@
 @interface Game : NSObject<GLKViewDelegate>
 
 @property (nonatomic, readonly, weak) EAGLContext * context;
+@property (nonatomic, readonly) GLsizei width;
+@property (nonatomic, readonly) GLsizei height;
 
-- (instancetype)initWithContext:(EAGLContext*)context;
+- (instancetype)initWithContext:(EAGLContext*)context width:(GLsizei)width height:(GLsizei)height;
 
 @end
