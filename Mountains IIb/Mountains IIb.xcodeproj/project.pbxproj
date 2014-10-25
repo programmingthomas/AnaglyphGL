@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E94008831709DDB900314D67 /* RegularVertex.glsl */; };
-		E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E94008841709DDB900314D67 /* Stereoscopic.glsl */; };
 		E972A62A1708129100E77895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6291708129100E77895 /* UIKit.framework */; };
 		E972A62C1708129100E77895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62B1708129100E77895 /* Foundation.framework */; };
 		E972A62E1708129100E77895 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62D1708129100E77895 /* CoreGraphics.framework */; };
@@ -47,8 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E94008831709DDB900314D67 /* RegularVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegularVertex.glsl; sourceTree = "<group>"; };
-		E94008841709DDB900314D67 /* Stereoscopic.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stereoscopic.glsl; sourceTree = "<group>"; };
 		E972A6261708129100E77895 /* Mountains IIb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mountains IIb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E972A6291708129100E77895 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E972A62B1708129100E77895 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -149,7 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				E972A67E170815CE00E77895 /* bigtexture.png */,
-				E9E6BB1719FADF1700BD5D92 /* Model + Utilities */,
+				E9E6BB1719FADF1700BD5D92 /* Utility */,
 				E9E6BB1619FADF0E00BD5D92 /* View Controllers */,
 				E9E6BB1819FADF2B00BD5D92 /* Shaders */,
 				E9E6BB1919FADFA800BD5D92 /* Views */,
@@ -202,20 +198,18 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		E9E6BB1719FADF1700BD5D92 /* Model + Utilities */ = {
+		E9E6BB1719FADF1700BD5D92 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */,
 				E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */,
 			);
-			name = "Model + Utilities";
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		E9E6BB1819FADF2B00BD5D92 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
-				E94008831709DDB900314D67 /* RegularVertex.glsl */,
-				E94008841709DDB900314D67 /* Stereoscopic.glsl */,
 				E972A680170815DD00E77895 /* Fragment.glsl */,
 				E972A681170815DE00E77895 /* Vertex.glsl */,
 			);
@@ -316,8 +310,6 @@
 				E972A63E1708129200E77895 /* Default@2x.png in Resources */,
 				E972A6401708129200E77895 /* Default-568h@2x.png in Resources */,
 				E972A67F170815CE00E77895 /* bigtexture.png in Resources */,
-				E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */,
-				E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

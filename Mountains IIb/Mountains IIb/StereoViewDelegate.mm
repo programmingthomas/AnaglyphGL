@@ -171,7 +171,7 @@ GLushort rectangleIndexData[] = {0, 1, 2, 1, 2, 3};
     
 //    glUniformMatrix4fv(self.stereoProgram.modelViewMatrix, 1, GL_FALSE, GLKMatrix4Identity.m);
     
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
 }
 
 @end
