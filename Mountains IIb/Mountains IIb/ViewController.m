@@ -15,11 +15,11 @@
  */
 
 #import "ViewController.h"
-#import "Game.h"
+#import "StereoViewDelegate.h"
 
 @interface ViewController ()
 
-@property Game * game;
+@property StereoViewDelegate * game;
 @property EAGLContext * context;
 
 @end
@@ -38,7 +38,7 @@
     GLsizei width = CGRectGetWidth(glkView.frame) * glkView.contentScaleFactor;
     GLsizei height = CGRectGetHeight(glkView.frame) * glkView.contentScaleFactor;
     
-    self.game = [[Game alloc] initWithContext:self.context width:width height:height];
+    self.game = [[StereoViewDelegate alloc] initWithContext:self.context width:width height:height];
     
     glkView.delegate = self.game;
     self.preferredFramesPerSecond = 60;

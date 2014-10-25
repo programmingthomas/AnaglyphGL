@@ -8,7 +8,7 @@
 
 #import <GLKit/GLKit.h>
 
-@interface Game : NSObject<GLKViewDelegate>
+@interface StereoViewDelegate : NSObject<GLKViewDelegate>
 
 @property (nonatomic, readonly, weak) EAGLContext * context;
 @property (nonatomic, readonly) GLsizei width;

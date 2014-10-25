@@ -32,7 +32,7 @@
 		E972A68B1709949000E77895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6351708129100E77895 /* main.m */; };
 		E972A68C1709949000E77895 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E972A6741708133300E77895 /* GameView.mm */; };
 		E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */; };
-		E9E6BB1C19FAE86E00BD5D92 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1B19FAE86E00BD5D92 /* Game.mm */; };
+		E9E6BB1C19FAE86E00BD5D92 /* StereoViewDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */; };
 		E9E6BB1F19FAEAB100BD5D92 /* OffscreenBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */; };
 /* End PBXBuildFile section */
 
@@ -81,8 +81,8 @@
 		E972A681170815DE00E77895 /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
 		E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COBGLProgram.h; sourceTree = "<group>"; };
 		E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COBGLProgram.m; sourceTree = "<group>"; };
-		E9E6BB1A19FAE86E00BD5D92 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		E9E6BB1B19FAE86E00BD5D92 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
+		E9E6BB1A19FAE86E00BD5D92 /* StereoViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoViewDelegate.h; sourceTree = "<group>"; };
+		E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoViewDelegate.mm; sourceTree = "<group>"; };
 		E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffscreenBuffer.h; sourceTree = "<group>"; };
 		E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OffscreenBuffer.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,8 +229,8 @@
 				E972A67B170815C000E77895 /* GLView.mm */,
 				E972A6731708133300E77895 /* GameView.h */,
 				E972A6741708133300E77895 /* GameView.mm */,
-				E9E6BB1A19FAE86E00BD5D92 /* Game.h */,
-				E9E6BB1B19FAE86E00BD5D92 /* Game.mm */,
+				E9E6BB1A19FAE86E00BD5D92 /* StereoViewDelegate.h */,
+				E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */,
 				E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */,
 				E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */,
 			);
@@ -358,7 +358,7 @@
 				E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */,
 				E972A6881709949000E77895 /* GLView.mm in Sources */,
 				E972A6891709949000E77895 /* AppDelegate.m in Sources */,
-				E9E6BB1C19FAE86E00BD5D92 /* Game.mm in Sources */,
+				E9E6BB1C19FAE86E00BD5D92 /* StereoViewDelegate.mm in Sources */,
 				E972A68B1709949000E77895 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

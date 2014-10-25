@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Programming Thomas. All rights reserved.
 //
 
-#import "Game.h"
+#import "StereoViewDelegate.h"
 #import "OffscreenBuffer.h"
 
-@interface Game () {
+@interface StereoViewDelegate () {
     OffscreenBuffer * _left, * _right;
 }
 
 @end
 
-@implementation Game
+@implementation StereoViewDelegate
 
 #pragma mark - Deallocation
 
