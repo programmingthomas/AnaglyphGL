@@ -34,6 +34,7 @@
     
     GLKView * glkView = (GLKView*)self.view;
     glkView.context = self.context;
+    glkView.drawableDepthFormat = GLKViewDrawableDepthFormat16;
     
     GLsizei width = CGRectGetWidth(glkView.frame) * glkView.contentScaleFactor;
     GLsizei height = CGRectGetHeight(glkView.frame) * glkView.contentScaleFactor;
