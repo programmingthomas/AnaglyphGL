@@ -31,6 +31,11 @@
 
 @implementation ViewController
 
+- (void)dealloc {
+    //Allows subclasses to do proper clean up
+    [EAGLContext setCurrentContext:self.context];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -55,6 +60,13 @@
     
     glkView.delegate = self.stereoViewDelegate;
     self.preferredFramesPerSecond = 60;
+}
+
+- (void)update {
+    GLfloat ratio = CGRectGetWidth(self.view.frame) / CGRectGetHeight(self.view.frame);
+    self.game.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), ratio, 0.01f, 100.0f);
+    self.game.modelMatrix = GLKMatrix4Translate(GLKMatrix4MakeRotation((float)fmod(CFAbsoluteTimeGetCurrent(), 2.0 * M_PI), 0, 0, 1), 0, 0, -4);
+    self.game.viewMatrix = GLKMatrix4Identity;
 }
 
 @end

@@ -7,11 +7,17 @@
 //
 
 #import <GLKit/GLKit.h>
+#import "COBGLProgram.h"
 
-@interface Game : NSObject
+@interface Game : NSObject {
+    GLuint _texture;
+}
+
+@property (readonly) COBGLProgram * program;
 
 @property GLKMatrix4 projectionMatrix;
-@property GLKMatrix4 cameraMatrix;
+@property GLKMatrix4 viewMatrix;
+@property GLKMatrix4 modelMatrix;
 
 - (void)drawWithCameraOffsetMatrix:(GLKMatrix4)cameraOffsetMatrix;
 
