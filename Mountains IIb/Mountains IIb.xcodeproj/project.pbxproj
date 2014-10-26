@@ -68,8 +68,6 @@
 		E972A667170812CC00E77895 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		E972A668170812CC00E77895 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E972A669170812CC00E77895 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E972A6731708133300E77895 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
-		E972A6741708133300E77895 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameView.mm; sourceTree = "<group>"; };
 		E972A67E170815CE00E77895 /* bigtexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigtexture.png; sourceTree = "<group>"; };
 		E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COBGLProgram.h; sourceTree = "<group>"; };
 		E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COBGLProgram.m; sourceTree = "<group>"; };
@@ -213,8 +211,6 @@
 		E9E6BB1919FADFA800BD5D92 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E972A6731708133300E77895 /* GameView.h */,
-				E972A6741708133300E77895 /* GameView.mm */,
 				E9E6BB1A19FAE86E00BD5D92 /* StereoViewDelegate.h */,
 				E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */,
 				E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */,
