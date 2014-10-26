@@ -33,15 +33,22 @@ typedef struct {
 } ChunkVertexData;
 
 typedef NS_ENUM(GLubyte, Block) {
+    //Translucent blocks
     BlockAir,
     BlockLeaves,
+    //Opaque blocks
     BlockDirt,
     BlockStone,
     BlockCloud,
     BlockBrick,
     BlockWood,
+    //Number of blocks
     BlockCount
 };
+
+inline bool BlockIsTransparent(Block block) {
+    return block <= BlockLeaves;
+}
 
 class Chunk {
     GLuint _vertexArrayBuffer;

@@ -29,7 +29,7 @@ Chunk::Chunk() {
     data = (Block*)calloc(sizeof(Block), ChunkWidth * ChunkLength * ChunkHeight);
     
     //Setup some sensible defaults. The level is dirt, the remainder are air
-    for (GLuint z = 0; z < ChunkHeight; z++) {
+    for (GLuint z = 0; z < ChunkLength; z++) {
         for (GLuint y = 0; y < ChunkLength; y++) {
             for (GLuint x = 0; x < ChunkWidth; x++) {
                 Set(x, y, z, z < 1 ? BlockDirt : BlockAir);
@@ -67,17 +67,29 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
                 if (block != BlockAir) {
                     GLfloat xOffset = textureOffsets[block];
                     //Bottom
-                    AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.5f);
+                    if (z == 0 || BlockIsTransparent(Get(x, y, z - 1))) {
+                        AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.5f);
+                    }
                     //Right side
-                    AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.25f);
+                    if (x == ChunkWidth - 1 || BlockIsTransparent(Get(x + 1, y, z))) {
+                        AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.25f);
+                    }
                     //Top
-                    AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    xOffset, 0);
+                    if (z == ChunkHeight - 1 || BlockIsTransparent(Get(x, y, z + 1))) {
+                        AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    xOffset, 0);
+                    }
                     //Left side
-                    AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.25f);
+                    if (x == 0 || BlockIsTransparent(Get(x - 1, y, z))) {
+                        AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.25f);
+                    }
                     //Back
-                    AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.25f);
+                    if (y == ChunkLength - 1 || BlockIsTransparent(Get(x, y + 1, z))) {
+                        AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.25f);
+                    }
                     //Front
-                    AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.25f);
+                    if (y == 0 || BlockIsTransparent(Get(x, y - 1, z))) {
+                        AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.25f);
+                    }
                 }
             }
         }
