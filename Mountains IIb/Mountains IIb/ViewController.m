@@ -80,9 +80,11 @@ BOOL const Stereoscopic3D = NO;
 }
 
 - (void)update {
-//    GLKVector3 cameraRotation = self.cameraRotation;
-//    cameraRotation.x += self.timeSinceLastUpdate;
-//    self.cameraRotation = cameraRotation;
+    //Camera is moved at 1 block per second based on current rotation
+    GLfloat xMotion = sinf(self.cameraRotation.y) * self.timeSinceLastUpdate;
+    GLfloat yMotion = cosf(self.cameraRotation.y) * self.timeSinceLastUpdate;
+    GLKVector3 offset = GLKVector3Make(xMotion, yMotion, 0);
+    self.cameraPosition = GLKVector3Add(self.cameraPosition, offset);
     
     GLfloat ratio = CGRectGetWidth(self.view.frame) / CGRectGetHeight(self.view.frame);
     self.game.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), ratio, 0.01f, 100.0f);
