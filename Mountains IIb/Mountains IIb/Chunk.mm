@@ -28,7 +28,7 @@ Chunk::Chunk() {
     hasVertexData = false;
     data = (Block*)calloc(sizeof(Block), ChunkWidth * ChunkLength * ChunkHeight);
     
-    //Setup some sensible defaults. The level is dirt, the remainder are air
+    //Setup some sensible defaults. The first level is dirt, the remainder are air
     for (GLuint z = 0; z < ChunkLength; z++) {
         for (GLuint y = 0; y < ChunkLength; y++) {
             for (GLuint x = 0; x < ChunkWidth; x++) {

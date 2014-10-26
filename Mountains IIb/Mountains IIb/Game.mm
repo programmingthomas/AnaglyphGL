@@ -15,11 +15,15 @@
 // limitations under the License.
 
 #import <iostream>
+#import <vector>
 //For Vertex Arrays
 #import <OpenGLES/ES2/glext.h>
 
 #import "Game.h"
 #import "Chunk.h"
+
+const int WorldWidthInChunks = 4;
+const int WorldLengthInChunks = 4;
 
 #pragma mark - Regular shader
 
@@ -47,7 +51,7 @@ NSString * const fragmentShaderSource = @""
 
 
 @interface Game () {
-    Chunk * _chunk;
+    std::vector<Chunk*> _chunks;
 }
 
 @end
@@ -58,7 +62,7 @@ NSString * const fragmentShaderSource = @""
 
 - (void)dealloc {
     [self _deleteTexture];
-    [self _deleteChunk];
+    [self _deleteChunks];
 }
 
 #pragma mark - Initialisation
@@ -68,7 +72,7 @@ NSString * const fragmentShaderSource = @""
     if (self) {
         [self _compileProgram];
         [self _loadTexture];
-        [self _loadChunk];
+        [self _loadChunks];
     }
     return self;
 }
@@ -91,13 +95,21 @@ NSString * const fragmentShaderSource = @""
 
 #pragma mark - Vertex data management
 
-- (void)_loadChunk {
-    _chunk = new Chunk();
-    _chunk->UpdateVertexData(self.program.position, self.program.uv);
+- (void)_loadChunks {
+    for (GLuint x = 0; x < WorldWidthInChunks; x++) {
+        for (GLuint y = 0; y < WorldLengthInChunks; y++) {
+            Chunk * chunk = new Chunk();
+            chunk->positon = GLKVector3Make(x * ChunkWidth, y * ChunkLength, 0);
+            chunk->UpdateVertexData(self.program.position, self.program.uv);
+            _chunks.push_back(chunk);
+        }
+    }
 }
 
-- (void)_deleteChunk {
-    delete _chunk;
+- (void)_deleteChunks {
+    for (auto chunk : _chunks) {
+        delete chunk;
+    }
 }
 
 #pragma mark - Rendering
@@ -107,11 +119,11 @@ NSString * const fragmentShaderSource = @""
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     GLKMatrix4 viewMatrix = GLKMatrix4Multiply(self.viewMatrix, cameraOffsetMatrix);
-    GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(viewMatrix, self.modelMatrix);
+    viewMatrix = GLKMatrix4Multiply(viewMatrix, self.modelMatrix);
     
     [self.program use];
     
-    glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, modelViewMatrix.m);
+    
     glUniformMatrix4fv(self.program.projectionMatrix, 1, GL_FALSE, self.projectionMatrix.m);
     
     glActiveTexture(GL_TEXTURE0);
@@ -120,7 +132,13 @@ NSString * const fragmentShaderSource = @""
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glUniform1i(self.program.texture0, 0);
     
-    _chunk->Draw();
+    for (auto chunk : _chunks) {
+        GLKMatrix4 translation = GLKMatrix4MakeTranslation(chunk->positon.x, chunk->positon.y, chunk->positon.z);
+        GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(viewMatrix, translation);
+        glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, modelViewMatrix.m);
+        chunk->Draw();
+    }
+    
 }
 
 @end

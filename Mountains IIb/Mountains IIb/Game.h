@@ -17,6 +17,9 @@
 #import <GLKit/GLKit.h>
 #import "COBGLProgram.h"
 
+extern const int WorldWidthInChunks;
+extern const int WorldLengthInChunks;
+
 @interface Game : NSObject {
     GLuint _texture;
 }

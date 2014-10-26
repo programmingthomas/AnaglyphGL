@@ -62,6 +62,8 @@ public:
     //I'm not sure if the inline funcitons work if this isn't public
     std::vector<ChunkVertexData> vertexData;
     
+    GLKVector3 positon;
+    
     Chunk();
     ~Chunk();
     
