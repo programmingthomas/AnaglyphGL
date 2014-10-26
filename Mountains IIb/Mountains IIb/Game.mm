@@ -35,7 +35,6 @@ NSString * const vertexShaderSource = @""
 
 "attribute vec2 uv;"
 "varying vec2 uvOut;"
-
 "void main() {"
 "    gl_Position = projectionMatrix * modelViewMatrix * position;"
 "    uvOut = uv;"

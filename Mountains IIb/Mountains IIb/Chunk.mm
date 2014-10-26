@@ -57,6 +57,22 @@ Chunk::Chunk() {
     Set(ChunkWidth / 2, ChunkLength / 2 - 1, ChunkHeight - 1, BlockCloud);
     Set(ChunkWidth / 2 - 1, ChunkLength / 2, ChunkHeight - 1, BlockCloud);
     Set(ChunkWidth / 2 + 1, ChunkLength / 2, ChunkHeight - 1, BlockCloud);
+    
+    //Mountains
+    for (GLuint z = 0; z < ChunkLength / 2; z++) {
+        GLfloat radius = ChunkLength / 2 - z;
+        radius *= radius;
+        for (GLuint x = 0; x < radius; x++) {
+            for (GLuint y = 0; y < radius; y++) {
+                if (x * x + y * y < radius) {
+                    Set(x, y, z, BlockDirt);
+                    Set(ChunkWidth - 1 - x, y, z, BlockDirt);
+                    Set(x, ChunkLength - 1 - y, z, BlockDirt);
+                    Set(ChunkWidth - 1 - x, ChunkLength - 1 - y, z, BlockDirt);
+                }
+            }
+        }
+    }
 }
 
 Chunk::~Chunk() {
