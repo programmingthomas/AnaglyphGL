@@ -19,7 +19,7 @@
 #import "Game.h"
 #import "GameRenderer.h"
 
-BOOL const Stereoscopic3D = NO;
+BOOL const Stereoscopic3D = YES;
 
 @interface ViewController ()
 
