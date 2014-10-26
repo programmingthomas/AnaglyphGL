@@ -51,9 +51,13 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
     //Clear all existing vertex data
     vertexData.clear();
     
-    //Really crappy way of creating vertex data
-    
-    
+    GLfloat textureOffsets[BlockCount];
+    textureOffsets[BlockLeaves] = 0.75f;
+    textureOffsets[BlockDirt] = 0.5f; //Or 0.375f if not the top most block
+    textureOffsets[BlockStone] = 0.25f;
+    textureOffsets[BlockCloud] = 0.125f;
+    textureOffsets[BlockBrick] = 0;
+    textureOffsets[BlockWood] = 0.62f;
     
     for (GLuint z = 0; z < ChunkHeight; z++) {
         for (GLuint y = 0; y < ChunkLength; y++) {
@@ -61,18 +65,19 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
                 Block block = Get(x, y, z);
                 
                 if (block != BlockAir) {
+                    GLfloat xOffset = textureOffsets[block];
                     //Bottom
-                    AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    0, 0);
+                    AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.5f);
                     //Right side
-                    AddFace(x + 1, y, z,        0, 0, 1,    0, 1, 0,    0, 0);
+                    AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.25f);
                     //Top
-                    AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    0, 0);
+                    AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    xOffset, 0);
                     //Left side
-                    AddFace(x, y, z + 1,        0, 0, -1,   0, 1, 0,    0, 0);
+                    AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.25f);
                     //Back
-                    AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,   0, 0);
+                    AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.25f);
                     //Front
-                    AddFace(x, y + 1, z,        1, 0, 0,    0, 0, 1,    0, 0);
+                    AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.25f);
                 }
             }
         }

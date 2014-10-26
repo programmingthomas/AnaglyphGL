@@ -80,9 +80,9 @@ BOOL const Stereoscopic3D = NO;
 }
 
 - (void)update {
-    //Camera is moved at 1 block per second based on current rotation
-    GLfloat xMotion = sinf(self.cameraRotation.y) * self.timeSinceLastUpdate;
-    GLfloat yMotion = cosf(self.cameraRotation.y) * self.timeSinceLastUpdate;
+    //Camera is moved at 2 blocks per second based on current rotation
+    GLfloat xMotion = sinf(self.cameraRotation.y) * self.timeSinceLastUpdate * 2;
+    GLfloat yMotion = cosf(self.cameraRotation.y) * self.timeSinceLastUpdate * 2;
     GLKVector3 offset = GLKVector3Make(xMotion, yMotion, 0);
     self.cameraPosition = GLKVector3Add(self.cameraPosition, offset);
     

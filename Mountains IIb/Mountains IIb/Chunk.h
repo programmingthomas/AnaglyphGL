@@ -80,8 +80,8 @@ public:
         
         ChunkVertexData topLeft = {{aX, aY, aZ}, {uvX, uvY}};
         ChunkVertexData topRight = {{aX + bX, aY + bY, aZ + bZ}, {uvX + 0.125f, uvY}};
-        ChunkVertexData bottomLeft = {{aX + cX, aY + cY, aZ + cZ}, {uvX, uvY + 0.33f}};
-        ChunkVertexData bottomRight = {{aX + bX + cX, aY + bY + cY, aZ + bZ + cZ}, {uvX + 0.125f, uvY + 0.33f}};
+        ChunkVertexData bottomLeft = {{aX + cX, aY + cY, aZ + cZ}, {uvX, uvY + 0.25f}};
+        ChunkVertexData bottomRight = {{aX + bX + cX, aY + bY + cY, aZ + bZ + cZ}, {uvX + 0.125f, uvY + 0.25f}};
         
         //First triangle
         vertexData.push_back(topLeft);
