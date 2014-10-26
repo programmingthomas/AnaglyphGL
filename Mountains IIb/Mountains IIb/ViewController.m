@@ -19,7 +19,7 @@
 #import "Game.h"
 #import "GameRenderer.h"
 
-BOOL const Stereoscopic3D = YES;
+BOOL const Stereoscopic3D = NO;
 
 @interface ViewController ()
 
@@ -62,9 +62,17 @@ BOOL const Stereoscopic3D = YES;
     
     if (Stereoscopic3D) {
         glkView.delegate = self.stereoViewDelegate;
+        self.preferredFramesPerSecond = 30;
+    }
+    else {
+        self.preferredFramesPerSecond = 60;
     }
     
-    self.preferredFramesPerSecond = 60;
+    self.cameraPosition = GLKVector3Make(8, 8, 3);
+    self.cameraRotation = GLKVector3Make(-M_PI / 4, 0, 0);
+    
+    UIPanGestureRecognizer * panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    [self.view addGestureRecognizer:panGesture];
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -72,14 +80,36 @@ BOOL const Stereoscopic3D = YES;
 }
 
 - (void)update {
+//    GLKVector3 cameraRotation = self.cameraRotation;
+//    cameraRotation.x += self.timeSinceLastUpdate;
+//    self.cameraRotation = cameraRotation;
+    
     GLfloat ratio = CGRectGetWidth(self.view.frame) / CGRectGetHeight(self.view.frame);
     self.game.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), ratio, 0.01f, 100.0f);
-    self.game.modelMatrix = GLKMatrix4Translate(GLKMatrix4MakeRotation((float)fmod(CFAbsoluteTimeGetCurrent(), 2.0 * M_PI), 0, 0, 1), 0, 0, -10 + 5 * (float)cos(CFAbsoluteTimeGetCurrent()));
-    self.game.viewMatrix = GLKMatrix4Identity;
+    self.game.modelMatrix = GLKMatrix4Identity;
+    
+    GLKMatrix4 cameraMatrix = GLKMatrix4Identity;
+    cameraMatrix = GLKMatrix4RotateX(cameraMatrix, self.cameraRotation.x);
+    cameraMatrix = GLKMatrix4RotateY(cameraMatrix, self.cameraRotation.z);
+    cameraMatrix = GLKMatrix4RotateZ(cameraMatrix, self.cameraRotation.y);
+    cameraMatrix = GLKMatrix4TranslateWithVector3(cameraMatrix, GLKVector3Negate(self.cameraPosition));
+    
+    self.game.viewMatrix = cameraMatrix;
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
     [self.game drawWithCameraOffsetMatrix:GLKMatrix4Identity];
+}
+
+- (void)pan:(UIPanGestureRecognizer*)panGesture {
+    CGPoint translation = [panGesture translationInView:self.view];
+    translation.x /= CGRectGetWidth(self.view.frame);
+    translation.y /= CGRectGetHeight(self.view.frame);
+    [panGesture setTranslation:CGPointZero inView:self.view];
+    GLKVector3 cameraRotation = self.cameraRotation;
+    cameraRotation.x += translation.y;
+    cameraRotation.y += translation.x;
+    self.cameraRotation = cameraRotation;
 }
 
 @end

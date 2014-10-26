@@ -1,4 +1,4 @@
-// ViewController.h
+// COBGLProgram.h
 //
 // Copyright 2014 Thomas Denney
 //
@@ -14,12 +14,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <GLKit/GLKit.h>
+#ifndef Mountains_IIb_GLUtilities_h
+#define Mountains_IIb_GLUtilities_h
 
-@interface ViewController : GLKViewController
+template <class T>
+inline void glBufferData(GLenum target, const std::vector<T>& v, GLenum usage) {
+    glBufferData(target, v.size() * sizeof(T), &v[0], usage);
+}
 
-@property GLKVector3 cameraPosition;
-//TODO: Convert to quarternion
-@property GLKVector3 cameraRotation;
-
-@end
+#endif

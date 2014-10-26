@@ -19,6 +19,7 @@
 #import <OpenGLES/ES2/glext.h>
 
 #import "Game.h"
+#import "Chunk.h"
 
 #pragma mark - Regular shader
 
@@ -44,25 +45,9 @@ NSString * const fragmentShaderSource = @""
 "    gl_FragColor = texture2D(texture0, uvOut);"
 "}";
 
-#pragma mark - Cube object
-
-GLfloat cubeVertexData[] = {
-    // Data layout for each line below is:
-    // positionX, positionY, positionZ,     uvX, uvY
-    -0.5,   -0.5,   0,      0,      0,
-    0.5,    -0.5,   0,      0.125,  0,
-    -0.5,   0.5,    0,      0,      0.33,
-    
-    0.5,    -0.5,   0,      0.125,  0,
-    -0.5,   0.5,    0,      0,      0.33,
-    0.5,    0.5,    0,      0.125,  0.33
-};
-
-//GLushort cubeIndexData[] = {0, 1, 2, 1, 2, 3};
 
 @interface Game () {
-    GLuint _cubeVertexArray;
-    GLuint _cubeVertexBuffer/*, _cubeIndexBuffer*/;
+    Chunk * _chunk;
 }
 
 @end
@@ -73,7 +58,7 @@ GLfloat cubeVertexData[] = {
 
 - (void)dealloc {
     [self _deleteTexture];
-    [self _deleteVertexData];
+    [self _deleteChunk];
 }
 
 #pragma mark - Initialisation
@@ -83,7 +68,7 @@ GLfloat cubeVertexData[] = {
     if (self) {
         [self _compileProgram];
         [self _loadTexture];
-        [self _loadVertexData];
+        [self _loadChunk];
     }
     return self;
 }
@@ -106,31 +91,13 @@ GLfloat cubeVertexData[] = {
 
 #pragma mark - Vertex data management
 
-- (void)_loadVertexData {
-    glGenVertexArraysOES(1, &_cubeVertexArray);
-    glGenBuffers(1, &_cubeVertexBuffer);
-//    glGenBuffers(1, &_cubeIndexBuffer);
-    
-    glBindVertexArrayOES(_cubeVertexArray);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, _cubeVertexBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(cubeVertexData), cubeVertexData, GL_STATIC_DRAW);
-    
-    GLuint _positionSlot = self.program.position;
-    GLuint _textureSlot = self.program.uv;
-    
-    glEnableVertexAttribArray(_positionSlot);
-    glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(0));
-    glEnableVertexAttribArray(_textureSlot);
-    glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(GLfloat) * 5, (const GLvoid*)(sizeof(GLfloat) * 3));
-    
-    glBindVertexArrayOES(0);
+- (void)_loadChunk {
+    _chunk = new Chunk();
+    _chunk->UpdateVertexData(self.program.position, self.program.uv);
 }
 
-- (void)_deleteVertexData {
-    glDeleteBuffers(1, &_cubeVertexBuffer);
-//    glDeleteBuffers(1, &_cubeVertexBuffer);
-    glDeleteVertexArraysOES(1, &_cubeVertexArray);
+- (void)_deleteChunk {
+    delete _chunk;
 }
 
 #pragma mark - Rendering
@@ -153,8 +120,7 @@ GLfloat cubeVertexData[] = {
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glUniform1i(self.program.texture0, 0);
     
-    glBindVertexArrayOES(_cubeVertexArray);
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    _chunk->Draw();
 }
 
 @end
