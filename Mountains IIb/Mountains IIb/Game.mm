@@ -86,7 +86,12 @@ NSString * const fragmentShaderSource = @""
 #pragma mark - Texture management
 
 - (void)_loadTexture {
-    _texture = [GLKTextureLoader textureWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"bigtexture" ofType:@"png"] options:nil error:nil].name;
+    NSError * error;
+    NSString * path = [[NSBundle mainBundle] pathForResource:@"bigtexture" ofType:@"png"];
+    _texture = [GLKTextureLoader textureWithContentsOfFile:path options:nil error:&error].name;
+    if (error) {
+        NSLog(@"Error %@ for %@", error, path);
+    }
 }
 
 - (void)_deleteTexture {
@@ -115,7 +120,7 @@ NSString * const fragmentShaderSource = @""
 #pragma mark - Rendering
 
 - (void)drawWithCameraOffsetMatrix:(GLKMatrix4)cameraOffsetMatrix {
-    glClearColor(1, 1, 1, 1);
+    glClearColor(0.75, 0.9, 0.95, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     GLKMatrix4 viewMatrix = GLKMatrix4Multiply(self.viewMatrix, cameraOffsetMatrix);

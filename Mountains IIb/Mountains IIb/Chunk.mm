@@ -20,7 +20,7 @@
 
 const int ChunkWidth = 16;
 const int ChunkLength = 16;
-const int ChunkHeight = 64;
+const int ChunkHeight = 32;
 
 #pragma mark - Initialisation and destruction
 
@@ -28,14 +28,35 @@ Chunk::Chunk() {
     hasVertexData = false;
     data = (Block*)calloc(sizeof(Block), ChunkWidth * ChunkLength * ChunkHeight);
     
-    //Setup some sensible defaults. The first level is dirt, the remainder are air
-    for (GLuint z = 0; z < ChunkLength; z++) {
+    //Ground level is stone
+    for (GLuint x = 0; x < ChunkWidth; x++) {
         for (GLuint y = 0; y < ChunkLength; y++) {
-            for (GLuint x = 0; x < ChunkWidth; x++) {
-                Set(x, y, z, z < 1 ? BlockDirt : BlockAir);
-            }
+            Set(x, y, 0, BlockStone);
         }
     }
+    
+    //Brick walkways
+    for (GLuint n = 0; n < MIN(ChunkWidth, ChunkLength); n++) {
+        Set(ChunkWidth / 2, n, 1, BlockBrick);
+        Set(n, ChunkLength / 2, 1, BlockBrick);
+    }
+    
+    //Tree
+    Set(ChunkWidth / 2, ChunkLength / 2, 2, BlockWood);
+    Set(ChunkWidth / 2, ChunkLength / 2, 3, BlockWood);
+    Set(ChunkWidth / 2, ChunkLength / 2, 4, BlockWood);
+    Set(ChunkWidth / 2, ChunkLength / 2, 5, BlockLeaves);
+    Set(ChunkWidth / 2, ChunkLength / 2 + 1, 4, BlockLeaves);
+    Set(ChunkWidth / 2, ChunkLength / 2 - 1, 4, BlockLeaves);
+    Set(ChunkWidth / 2 - 1, ChunkLength / 2, 4, BlockLeaves);
+    Set(ChunkWidth / 2 + 1, ChunkLength / 2, 4, BlockLeaves);
+    
+    //Cloud
+    Set(ChunkWidth / 2, ChunkLength / 2, ChunkHeight - 1, BlockCloud);
+    Set(ChunkWidth / 2, ChunkLength / 2 + 1, ChunkHeight - 1, BlockCloud);
+    Set(ChunkWidth / 2, ChunkLength / 2 - 1, ChunkHeight - 1, BlockCloud);
+    Set(ChunkWidth / 2 - 1, ChunkLength / 2, ChunkHeight - 1, BlockCloud);
+    Set(ChunkWidth / 2 + 1, ChunkLength / 2, ChunkHeight - 1, BlockCloud);
 }
 
 Chunk::~Chunk() {
@@ -68,11 +89,11 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
                     GLfloat xOffset = textureOffsets[block];
                     //Bottom
                     if (z == 0 || BlockIsTransparent(Get(x, y, z - 1))) {
-                        AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.5f);
+                        AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.25f);
                     }
                     //Right side
                     if (x == ChunkWidth - 1 || BlockIsTransparent(Get(x + 1, y, z))) {
-                        AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.25f);
+                        AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.125f);
                     }
                     //Top
                     if (z == ChunkHeight - 1 || BlockIsTransparent(Get(x, y, z + 1))) {
@@ -80,15 +101,15 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
                     }
                     //Left side
                     if (x == 0 || BlockIsTransparent(Get(x - 1, y, z))) {
-                        AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.25f);
+                        AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.125f);
                     }
                     //Back
                     if (y == ChunkLength - 1 || BlockIsTransparent(Get(x, y + 1, z))) {
-                        AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.25f);
+                        AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.125f);
                     }
                     //Front
                     if (y == 0 || BlockIsTransparent(Get(x, y - 1, z))) {
-                        AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.25f);
+                        AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.125f);
                     }
                 }
             }
