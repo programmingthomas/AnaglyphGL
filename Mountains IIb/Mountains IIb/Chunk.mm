@@ -61,18 +61,18 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
                 Block block = Get(x, y, z);
                 
                 if (block != BlockAir) {
-                    //Front
+                    //Bottom
                     AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    0, 0);
                     //Right side
                     AddFace(x + 1, y, z,        0, 0, 1,    0, 1, 0,    0, 0);
-                    //Back
+                    //Top
                     AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    0, 0);
                     //Left side
                     AddFace(x, y, z + 1,        0, 0, -1,   0, 1, 0,    0, 0);
-                    //Top
-                    AddFace(x, y, z + 1,        0, 0, 1,    0, 0, -1,   0, 0);
-                    //Bottom
-                    AddFace(x, y + 1, z,        0, 0, 1,    0, 0, 1,    0, 0);
+                    //Back
+                    AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,   0, 0);
+                    //Front
+                    AddFace(x, y + 1, z,        1, 0, 0,    0, 0, 1,    0, 0);
                 }
             }
         }

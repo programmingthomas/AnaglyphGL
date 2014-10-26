@@ -108,10 +108,9 @@ BOOL const Stereoscopic3D = NO;
     translation.x /= CGRectGetWidth(self.view.frame);
     translation.y /= CGRectGetHeight(self.view.frame);
     [panGesture setTranslation:CGPointZero inView:self.view];
-    GLKVector3 cameraRotation = self.cameraRotation;
-    cameraRotation.x += translation.y;
-    cameraRotation.y += translation.x;
-    self.cameraRotation = cameraRotation;
+    
+    GLKVector3 rotationAddition = GLKVector3Make(translation.y, translation.x, 0);
+    self.cameraRotation = GLKVector3Add(self.cameraRotation, rotationAddition);
 }
 
 @end
