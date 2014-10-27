@@ -73,6 +73,8 @@ public:
     void DeleteVertexData();
     void Draw();
     
+    bool visible;
+    
     inline void Set(GLuint x, GLuint y, GLuint z, Block block) {
         data[XYZ(x,y,z)] = block;
     }

@@ -168,6 +168,8 @@ void Chunk::DeleteVertexData() {
 }
 
 void Chunk::Draw() {
-    glBindVertexArrayOES(_vertexArrayObject);
-    glDrawArrays(GL_TRIANGLES, 0, vertexData.size());
+    if (visible) {
+        glBindVertexArrayOES(_vertexArrayObject);
+        glDrawArrays(GL_TRIANGLES, 0, vertexData.size());
+    }
 }

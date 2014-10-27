@@ -58,6 +58,7 @@ NSString * const fragmentShaderSource = @""
 
 @interface Game () {
     std::vector<Chunk*> _chunks;
+    dispatch_queue_t queue;
 }
 
 @end
@@ -79,6 +80,8 @@ NSString * const fragmentShaderSource = @""
         [self _compileProgram];
         [self _loadTexture];
         [self _loadChunks];
+        
+        queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     }
     return self;
 }
@@ -126,6 +129,29 @@ NSString * const fragmentShaderSource = @""
 #pragma mark - Updating
 
 - (void)recalculateCameraPosition {
+    GLfloat cameraX = MAX(MIN(self.cameraPosition.x, (GLfloat)WorldWidthInChunks * (GLfloat)ChunkWidth), 0.0);
+    GLfloat cameraY = MAX(MIN(self.cameraPosition.y, (GLfloat)WorldLengthInChunks * (GLfloat)ChunkLength), 0.0);
+    
+    GLuint chunkX = (GLuint)MAX(0, MIN(floorf(cameraX / (GLfloat)ChunkWidth), WorldWidthInChunks));
+    GLuint chunkY = (GLuint)MAX(0, MIN(floorf(cameraY / (GLfloat)ChunkLength), WorldLengthInChunks));
+    
+    
+    
+    GLuint chunkBlockX = MAX(0, MIN(ChunkWidth - 1, floorf(cameraX) - chunkX * ChunkWidth));
+    GLuint chunkBlockY = MAX(0, MIN(ChunkLength - 1, floorf(cameraY) - chunkY * ChunkLength));
+    
+    GLuint chunkIndex = chunkX * WorldWidthInChunks + chunkY;
+    
+    auto chunk = _chunks[chunkIndex];
+    if (chunk != NULL) {
+        for (GLuint z = 0; z < ChunkHeight; z++) {
+            if (chunk->Get(chunkBlockX, chunkBlockY, z) == BlockAir) {
+                self.cameraPosition = GLKVector3Make(cameraX, cameraY, z + 2);
+                break;
+            }
+        }
+    }
+    
     GLKMatrix4 cameraMatrix = GLKMatrix4Identity;
     cameraMatrix = GLKMatrix4RotateX(cameraMatrix, self.cameraRotation.x);
     cameraMatrix = GLKMatrix4RotateY(cameraMatrix, self.cameraRotation.z);
@@ -133,6 +159,12 @@ NSString * const fragmentShaderSource = @""
     cameraMatrix = GLKMatrix4TranslateWithVector3(cameraMatrix, GLKVector3Negate(self.cameraPosition));
     
     self.viewMatrix = cameraMatrix;
+    dispatch_apply(_chunks.size(), queue, ^(size_t n) {
+        Chunk * chunk = _chunks[n];
+        GLKVector3 difference = GLKVector3Subtract(self.cameraPosition, chunk->positon);
+        GLfloat distance = GLKVector3Length(difference);
+        chunk->visible = distance < 32;
+    });
 }
 
 #pragma mark - Rendering
@@ -161,7 +193,6 @@ NSString * const fragmentShaderSource = @""
     for (auto chunk : _chunks) {
         chunk->Draw();
     }
-    
 }
 
 @end
