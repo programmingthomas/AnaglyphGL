@@ -84,7 +84,7 @@ Chunk::~Chunk() {
 
 #pragma mark - Updating vertex data
 
-void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
+void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot, GLuint normalSlot) {
     //Clear all existing vertex data
     vertexData.clear();
     
@@ -105,27 +105,27 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
                     GLfloat xOffset = textureOffsets[block];
                     //Bottom
                     if (z == 0 || BlockIsTransparent(Get(x, y, z - 1))) {
-                        AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.25f);
+                        AddFace(x, y, z,            1, 0, 0,    0, 1, 0,    xOffset, 0.25f, {0, -1, 0});
                     }
                     //Right side
                     if (x == ChunkWidth - 1 || BlockIsTransparent(Get(x + 1, y, z))) {
-                        AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.125f);
+                        AddFace(x + 1, y, z + 1,        0, 1, 0,    0, 0, -1,    xOffset, 0.125f, {1, 0, 0});
                     }
                     //Top
                     if (z == ChunkHeight - 1 || BlockIsTransparent(Get(x, y, z + 1))) {
-                        AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    xOffset, 0);
+                        AddFace(x + 1, y, z + 1,    -1, 0, 0,   0, 1, 0,    xOffset, 0, {0, 1, 0});
                     }
                     //Left side
                     if (x == 0 || BlockIsTransparent(Get(x - 1, y, z))) {
-                        AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.125f);
+                        AddFace(x, y, z + 1,        0, 1, 0,   0, 0, -1,    xOffset, 0.125f, {-1, 0, 0});
                     }
                     //Back
                     if (y == ChunkLength - 1 || BlockIsTransparent(Get(x, y + 1, z))) {
-                        AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.125f);
+                        AddFace(x, y + 1, z + 1,        1, 0, 0,    0, 0, -1,   xOffset, 0.125f, {0, 0, 1});
                     }
                     //Front
                     if (y == 0 || BlockIsTransparent(Get(x, y - 1, z))) {
-                        AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.125f);
+                        AddFace(x, y, z + 1,        1, 0, 0,    0, 0, -1,    xOffset, 0.125f, {0, 0, -1});
                     }
                 }
             }
@@ -134,10 +134,10 @@ void Chunk::UpdateVertexData(GLuint positionSlot, GLuint uvSlot) {
     
     //Ensure that vertexData takes no more memory than it needs
     vertexData.shrink_to_fit();
-    UpdateGLBuffers(positionSlot, uvSlot);
+    UpdateGLBuffers(positionSlot, uvSlot, normalSlot);
 }
 
-void Chunk::UpdateGLBuffers(GLuint positionSlot, GLuint uvSlot) {
+void Chunk::UpdateGLBuffers(GLuint positionSlot, GLuint uvSlot, GLuint normalSlot) {
     if (hasVertexData) {
         DeleteVertexData();
     }
@@ -156,6 +156,10 @@ void Chunk::UpdateGLBuffers(GLuint positionSlot, GLuint uvSlot) {
     glVertexAttribPointer(_positionSlot, 3, GL_FLOAT, GL_FALSE, sizeof(ChunkVertexData), (const GLvoid*)offsetof(ChunkVertexData, position));
     glEnableVertexAttribArray(_textureSlot);
     glVertexAttribPointer(_textureSlot, 2, GL_FLOAT, GL_FALSE, sizeof(ChunkVertexData), (const GLvoid*)offsetof(ChunkVertexData, uv));
+    
+    glEnableVertexAttribArray(normalSlot);
+    glVertexAttribPointer(normalSlot, 3, GL_FLOAT, GL_FALSE, sizeof(ChunkVertexData), (const GLvoid*)offsetof(ChunkVertexData, normal));
+    
     glBindVertexArrayOES(0);
     
     hasVertexData = true;

@@ -31,18 +31,27 @@ NSString * const vertexShaderSource = @""
 "attribute vec4 position;"
 
 "uniform mat4 projectionMatrix;"
+"uniform mat3 normalMatrix;"
 "uniform mat4 modelViewMatrix;"
 "varying float fogFactor;"
 "uniform vec3 cameraPos;"
+"attribute vec3 normal;"
 
 "attribute vec2 uv;"
 "varying vec2 uvOut;"
+"varying float brightness;"
+
 "void main() {"
 "    vec4 vVertex = modelViewMatrix * position;"
 "    gl_Position = projectionMatrix * vVertex;"
 "    uvOut = uv;"
 "    float distance = length(cameraPos.xy - position.xy) * 0.03;"
 "    fogFactor = pow(clamp(0.0, 1.0, distance), 5.0);"
+"    vec3 eyeNormal = normalize(normal);"
+"    vec3 lightPosition = vec3(1.0, 1.0, 0.0);"
+//Clamp to make sure that cubes don't get too dark
+"    brightness = clamp(dot(eyeNormal, normalize(lightPosition)), 0.6, 1.0);"
+//"    brightness = 1.0;"
 "}";
 
 NSString * const fragmentShaderSource = @""
@@ -50,9 +59,11 @@ NSString * const fragmentShaderSource = @""
 "uniform sampler2D texture0;"
 "uniform lowp vec4 sky;"
 "varying lowp float fogFactor;"
+"varying lowp float brightness;"
 
 "void main() {"
 "    gl_FragColor = mix(texture2D(texture0, uvOut), sky, fogFactor);"
+"    gl_FragColor.rgb *= brightness;"
 "}";
 
 
@@ -89,7 +100,7 @@ NSString * const fragmentShaderSource = @""
 #pragma mark - Program creation
 
 - (void)_compileProgram {
-    _program = [[COBGLProgram alloc] initWithVertexShader:vertexShaderSource fragmentShader:fragmentShaderSource attributes:@[@"position", @"uv"]];
+    _program = [[COBGLProgram alloc] initWithVertexShader:vertexShaderSource fragmentShader:fragmentShaderSource attributes:@[@"position", @"uv", @"normal"]];
 }
 
 #pragma mark - Texture management
@@ -114,7 +125,7 @@ NSString * const fragmentShaderSource = @""
         for (GLuint y = 0; y < WorldLengthInChunks; y++) {
             Chunk * chunk = new Chunk();
             chunk->positon = GLKVector3Make(x * ChunkWidth, y * ChunkLength, 0);
-            chunk->UpdateVertexData(self.program.position, self.program.uv);
+            chunk->UpdateVertexData(self.program.position, self.program.uv, self.program.normal);
             _chunks.push_back(chunk);
         }
     }
@@ -179,6 +190,8 @@ NSString * const fragmentShaderSource = @""
     [self.program use];
     glUniform4f([self.program uniform:@"sky"], 0.75, 0.9, 0.95, 1);
     glUniform3fv([self.program uniform:@"cameraPos"], 1, self.cameraPosition.v);
+    
+    glUniformMatrix3fv(self.program.normalMatrix, 1, GL_FALSE, GLKMatrix3InvertAndTranspose(GLKMatrix4GetMatrix3(viewMatrix), NULL).m);
     
     glUniformMatrix4fv(self.program.projectionMatrix, 1, GL_FALSE, self.projectionMatrix.m);
     

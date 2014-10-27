@@ -30,6 +30,7 @@ extern const int ChunkHeight;
 typedef struct {
     GLKVector3 position;
     GLKVector2 uv;
+    GLKVector3 normal;
 } ChunkVertexData;
 
 typedef NS_ENUM(GLubyte, Block) {
@@ -50,13 +51,19 @@ inline bool BlockIsTransparent(Block block) {
     return block <= BlockLeaves;
 }
 
+inline GLKVector3 NormalForTriangle(GLKVector3 p1, GLKVector3 p2, GLKVector3 p3) {
+    GLKVector3 u = GLKVector3Subtract(p2, p1);
+    GLKVector3 v = GLKVector3Subtract(p3, p1);
+    return {u.y * v.z - u.z * v.y, u.z * v.x - u.x * v.z, u.x * v.y - u.y * v.x};
+}
+
 class Chunk {
     GLuint _vertexArrayBuffer;
     GLuint _vertexArrayObject;
     
     BOOL hasVertexData;
     
-    void UpdateGLBuffers(GLuint positionSlot, GLuint uvSlot);
+    void UpdateGLBuffers(GLuint positionSlot, GLuint uvSlot, GLuint normalSlot);
     
 public:
     //I'm not sure if the inline funcitons work if this isn't public
@@ -69,7 +76,7 @@ public:
     
     Block * data;
     
-    void UpdateVertexData(GLuint positionSlot, GLuint uvSlot);
+    void UpdateVertexData(GLuint positionSlot, GLuint uvSlot, GLuint normalSlot);
     void DeleteVertexData();
     void Draw();
     
@@ -87,7 +94,7 @@ public:
     //The second vector provided should be the vector to get from the top left to the top right
     //The third vector provided should be the fector to get from the top left to the bottom left
     //These vectors are added to form the coordinates of the bottom left
-    inline void AddFace(GLfloat aX, GLfloat aY, GLfloat aZ, GLfloat bX, GLfloat bY, GLfloat bZ, GLfloat cX, GLfloat cY, GLfloat cZ, GLfloat uvX, GLfloat uvY) {
+    inline void AddFace(GLfloat aX, GLfloat aY, GLfloat aZ, GLfloat bX, GLfloat bY, GLfloat bZ, GLfloat cX, GLfloat cY, GLfloat cZ, GLfloat uvX, GLfloat uvY, GLKVector3 normal) {
         
         ChunkVertexData topLeft = {{aX, aY, aZ}, {uvX, uvY}};
         ChunkVertexData topRight = {{aX + bX, aY + bY, aZ + bZ}, {uvX + 0.125f, uvY}};
@@ -98,6 +105,13 @@ public:
         topRight.position = GLKVector3Add(topRight.position, positon);
         bottomLeft.position = GLKVector3Add(bottomLeft.position, positon);
         bottomRight.position = GLKVector3Add(bottomRight.position, positon);
+        
+//        GLKVector3 normal = NormalForTriangle(topLeft.position, topRight.position, bottomLeft.position);
+        
+        topLeft.normal = normal;
+        topRight.normal = normal;
+        bottomLeft.normal = normal;
+        bottomRight.normal = normal;
         
         //First triangle
         vertexData.push_back(topLeft);
