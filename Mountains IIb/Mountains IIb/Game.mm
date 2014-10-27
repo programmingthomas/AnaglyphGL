@@ -87,7 +87,7 @@ NSString * const fragmentShaderSource = @""
 - (void)_loadTexture {
     NSError * error;
     NSString * path = [[NSBundle mainBundle] pathForResource:@"bigtexture" ofType:@"png"];
-    _texture = [GLKTextureLoader textureWithContentsOfFile:path options:nil error:&error].name;
+    _texture = [GLKTextureLoader textureWithContentsOfFile:path options:@{GLKTextureLoaderGenerateMipmaps: @YES} error:&error].name;
     if (error) {
         NSLog(@"Error %@ for %@", error, path);
     }
@@ -132,7 +132,7 @@ NSString * const fragmentShaderSource = @""
     
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, _texture);
-    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glUniform1i(self.program.texture0, 0);
     
