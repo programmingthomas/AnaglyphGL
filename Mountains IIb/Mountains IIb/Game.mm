@@ -172,9 +172,13 @@ NSString * const fragmentShaderSource = @""
     self.viewMatrix = cameraMatrix;
     dispatch_apply(_chunks.size(), queue, ^(size_t n) {
         Chunk * chunk = _chunks[n];
-        GLKVector3 difference = GLKVector3Subtract(self.cameraPosition, chunk->positon);
-        GLfloat distance = GLKVector3Length(difference);
-        chunk->visible = distance < 32;
+        auto DistanceUnderThreshold = ^BOOL(GLKVector3 vector) {
+            return GLKVector3Length(GLKVector3Subtract(self.cameraPosition, vector)) < 32;
+        };
+        chunk->visible = DistanceUnderThreshold(GLKVector3Add(chunk->positon, {0,0,0})) ||
+                         DistanceUnderThreshold(GLKVector3Add(chunk->positon, {(GLfloat)ChunkWidth,0,0})) ||
+                         DistanceUnderThreshold(GLKVector3Add(chunk->positon, {0,(GLfloat)ChunkLength,0})) ||
+                         DistanceUnderThreshold(GLKVector3Add(chunk->positon, {(GLfloat)ChunkWidth,(GLfloat)ChunkLength,0}));
     });
 }
 
