@@ -32,20 +32,27 @@ NSString * const vertexShaderSource = @""
 
 "uniform mat4 projectionMatrix;"
 "uniform mat4 modelViewMatrix;"
+"varying float fogFactor;"
+"uniform vec4 cameraPos;"
 
 "attribute vec2 uv;"
 "varying vec2 uvOut;"
 "void main() {"
-"    gl_Position = projectionMatrix * modelViewMatrix * position;"
+"    vec4 vVertex = modelViewMatrix * position;"
+"    gl_Position = projectionMatrix * vVertex;"
 "    uvOut = uv;"
+"    float distance = length(cameraPos.xy - position.xy) * 0.03;"
+"    fogFactor = pow(clamp(0.0, 1.0, distance), 5.0);"
 "}";
 
 NSString * const fragmentShaderSource = @""
 "varying lowp vec2 uvOut;"
 "uniform sampler2D texture0;"
+"uniform lowp vec4 sky;"
+"varying lowp float fogFactor;"
 
 "void main() {"
-"    gl_FragColor = texture2D(texture0, uvOut);"
+"    gl_FragColor = mix(texture2D(texture0, uvOut), sky, fogFactor);"
 "}";
 
 
@@ -126,7 +133,8 @@ NSString * const fragmentShaderSource = @""
     viewMatrix = GLKMatrix4Multiply(viewMatrix, self.modelMatrix);
     
     [self.program use];
-    
+    glUniform4f([self.program uniform:@"sky"], 0.75, 0.9, 0.95, 1);
+    glUniform4fv([self.program uniform:@"cameraPos"], 1, self.cameraPosition.v);
     
     glUniformMatrix4fv(self.program.projectionMatrix, 1, GL_FALSE, self.projectionMatrix.m);
     
@@ -135,11 +143,13 @@ NSString * const fragmentShaderSource = @""
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
     glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glUniform1i(self.program.texture0, 0);
+
+    glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, viewMatrix.m);
     
     for (auto chunk : _chunks) {
         GLKMatrix4 translation = GLKMatrix4MakeTranslation(chunk->positon.x, chunk->positon.y, chunk->positon.z);
-        GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(viewMatrix, translation);
-        glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, modelViewMatrix.m);
+//        GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(viewMatrix, translation);
+//        glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, modelViewMatrix.m);
         chunk->Draw();
     }
     

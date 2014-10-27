@@ -28,8 +28,8 @@ extern const int ChunkHeight;
 #define XYZ(x, y, z) z * ChunkWidth * ChunkLength + y * ChunkWidth + x
 
 typedef struct {
-    GLfloat position[3];
-    GLfloat uv[2];
+    GLKVector3 position;
+    GLKVector2 uv;
 } ChunkVertexData;
 
 typedef NS_ENUM(GLubyte, Block) {
@@ -91,6 +91,11 @@ public:
         ChunkVertexData topRight = {{aX + bX, aY + bY, aZ + bZ}, {uvX + 0.125f, uvY}};
         ChunkVertexData bottomLeft = {{aX + cX, aY + cY, aZ + cZ}, {uvX, uvY + 0.125f}};
         ChunkVertexData bottomRight = {{aX + bX + cX, aY + bY + cY, aZ + bZ + cZ}, {uvX + 0.125f, uvY + 0.125f}};
+        
+        topLeft.position = GLKVector3Add(topLeft.position, positon);
+        topRight.position = GLKVector3Add(topRight.position, positon);
+        bottomLeft.position = GLKVector3Add(bottomLeft.position, positon);
+        bottomRight.position = GLKVector3Add(bottomRight.position, positon);
         
         //First triangle
         vertexData.push_back(topLeft);

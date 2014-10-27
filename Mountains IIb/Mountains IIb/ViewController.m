@@ -97,6 +97,7 @@ BOOL const Stereoscopic3D = YES;
     cameraMatrix = GLKMatrix4TranslateWithVector3(cameraMatrix, GLKVector3Negate(self.cameraPosition));
     
     self.game.viewMatrix = cameraMatrix;
+    self.game.cameraPosition = GLKVector4MakeWithVector3(self.cameraPosition, 0);
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
