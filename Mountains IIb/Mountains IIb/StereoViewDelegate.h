@@ -1,4 +1,4 @@
-// AppDelegate.h
+// StereoViewDelegate.h
 //
 // Copyright 2014 Thomas Denney
 //
@@ -14,15 +14,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import <GLKit/GLKit.h>
+#import "COBGLProgram.h"
 
-@class ViewController;
+@interface StereoViewDelegate : NSObject<GLKViewDelegate>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@property (nonatomic, readonly, weak) EAGLContext * context;
+@property (nonatomic, readonly) GLsizei width;
+@property (nonatomic, readonly) GLsizei height;
 
-@property (strong, nonatomic) UIWindow *window;
+@property (nonatomic) id<GLKViewDelegate> leftEyeRenderer;
+@property (nonatomic) id<GLKViewDelegate> rightEyeRenderer;
 
-@property (strong, nonatomic) ViewController *viewController;
+- (instancetype)initWithContext:(EAGLContext*)context width:(GLsizei)width height:(GLsizei)height;
 
 @end

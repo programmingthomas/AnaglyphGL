@@ -1,4 +1,4 @@
-// AppDelegate.h
+// GameRenderer.h
 //
 // Copyright 2014 Thomas Denney
 //
@@ -14,15 +14,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
-#import "ViewController.h"
 
-@class ViewController;
+#import "StereoViewDelegate.h"
+#import "Game.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+typedef NS_ENUM(NSUInteger, CameraEye) {
+    CameraEyeLeft,
+    CameraEyeRight
+};
 
-@property (strong, nonatomic) UIWindow *window;
+@interface GameRenderer : NSObject<GLKViewDelegate>
 
-@property (strong, nonatomic) ViewController *viewController;
+@property (nonatomic) CameraEye eye;
+@property (nonatomic) GLfloat cameraOffset;
+
+@property (readonly)GLKMatrix4 cameraOffsetMatrix;
+
+@property (nonatomic, strong, readonly) Game * game;
+
+- (instancetype)initWithGame:(Game*)game eye:(CameraEye)eye;
 
 @end

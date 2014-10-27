@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E972A64E1708129400E77895"
-               BuildableName = "Mountains IIbTests.octest"
+               BuildableName = "Mountains IIbTests.xctest"
                BlueprintName = "Mountains IIbTests"
                ReferencedContainer = "container:Mountains IIb.xcodeproj">
             </BuildableReference>

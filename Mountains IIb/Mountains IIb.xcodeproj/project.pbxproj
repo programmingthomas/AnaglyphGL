@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E94008831709DDB900314D67 /* RegularVertex.glsl */; };
-		E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E94008841709DDB900314D67 /* Stereoscopic.glsl */; };
 		E972A62A1708129100E77895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6291708129100E77895 /* UIKit.framework */; };
 		E972A62C1708129100E77895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62B1708129100E77895 /* Foundation.framework */; };
 		E972A62E1708129100E77895 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62D1708129100E77895 /* CoreGraphics.framework */; };
@@ -16,7 +14,6 @@
 		E972A63C1708129200E77895 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63B1708129200E77895 /* Default.png */; };
 		E972A63E1708129200E77895 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63D1708129200E77895 /* Default@2x.png */; };
 		E972A6401708129200E77895 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A63F1708129200E77895 /* Default-568h@2x.png */; };
-		E972A6461708129200E77895 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E972A6441708129200E77895 /* ViewController.xib */; };
 		E972A6521708129500E77895 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A6291708129100E77895 /* UIKit.framework */; };
 		E972A6531708129500E77895 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A62B1708129100E77895 /* Foundation.framework */; };
 		E972A65B1708129500E77895 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E972A6591708129500E77895 /* InfoPlist.strings */; };
@@ -25,14 +22,15 @@
 		E972A66B170812CC00E77895 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A668170812CC00E77895 /* OpenGLES.framework */; };
 		E972A66C170812CC00E77895 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E972A669170812CC00E77895 /* QuartzCore.framework */; };
 		E972A67F170815CE00E77895 /* bigtexture.png in Resources */ = {isa = PBXBuildFile; fileRef = E972A67E170815CE00E77895 /* bigtexture.png */; };
-		E972A68417081DE700E77895 /* Fragment.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E972A680170815DD00E77895 /* Fragment.glsl */; };
-		E972A68517081DE700E77895 /* Vertex.glsl in Resources */ = {isa = PBXBuildFile; fileRef = E972A681170815DE00E77895 /* Vertex.glsl */; };
-		E972A6881709949000E77895 /* GLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E972A67B170815C000E77895 /* GLView.mm */; };
 		E972A6891709949000E77895 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6391708129200E77895 /* AppDelegate.m */; };
 		E972A68A1709949000E77895 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6421708129200E77895 /* ViewController.m */; };
 		E972A68B1709949000E77895 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E972A6351708129100E77895 /* main.m */; };
-		E972A68C1709949000E77895 /* GameView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E972A6741708133300E77895 /* GameView.mm */; };
 		E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */; };
+		E9E6BB1C19FAE86E00BD5D92 /* StereoViewDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */; };
+		E9E6BB1F19FAEAB100BD5D92 /* OffscreenBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */; };
+		E9E6BB2319FB7A5D00BD5D92 /* GameRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB2219FB7A5D00BD5D92 /* GameRenderer.mm */; };
+		E9E6BB2619FB7AD900BD5D92 /* Game.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB2519FB7AD900BD5D92 /* Game.mm */; };
+		E9E6BB5F19FB8D5E00BD5D92 /* Chunk.mm in Sources */ = {isa = PBXBuildFile; fileRef = E9E6BB5E19FB8D5E00BD5D92 /* Chunk.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E94008831709DDB900314D67 /* RegularVertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RegularVertex.glsl; sourceTree = "<group>"; };
-		E94008841709DDB900314D67 /* Stereoscopic.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Stereoscopic.glsl; sourceTree = "<group>"; };
+		E96FA27919FBB4EB004F2B8F /* GLUtilities.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLUtilities.h; sourceTree = "<group>"; };
 		E972A6261708129100E77895 /* Mountains IIb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mountains IIb.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E972A6291708129100E77895 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E972A62B1708129100E77895 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -63,8 +60,7 @@
 		E972A63F1708129200E77895 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E972A6411708129200E77895 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E972A6421708129200E77895 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E972A6451708129200E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		E972A64F1708129400E77895 /* Mountains IIbTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mountains IIbTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E972A64F1708129400E77895 /* Mountains IIbTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mountains IIbTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E972A6581708129500E77895 /* Mountains IIbTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mountains IIbTests-Info.plist"; sourceTree = "<group>"; };
 		E972A65A1708129500E77895 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E972A65C1708129500E77895 /* Mountains_IIbTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Mountains_IIbTests.h; sourceTree = "<group>"; };
@@ -72,15 +68,19 @@
 		E972A667170812CC00E77895 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		E972A668170812CC00E77895 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		E972A669170812CC00E77895 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E972A6731708133300E77895 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
-		E972A6741708133300E77895 /* GameView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameView.mm; sourceTree = "<group>"; };
-		E972A67A170815C000E77895 /* GLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLView.h; sourceTree = "<group>"; };
-		E972A67B170815C000E77895 /* GLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLView.mm; sourceTree = "<group>"; };
 		E972A67E170815CE00E77895 /* bigtexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigtexture.png; sourceTree = "<group>"; };
-		E972A680170815DD00E77895 /* Fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fragment.glsl; sourceTree = "<group>"; };
-		E972A681170815DE00E77895 /* Vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Vertex.glsl; sourceTree = "<group>"; };
 		E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COBGLProgram.h; sourceTree = "<group>"; };
 		E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COBGLProgram.m; sourceTree = "<group>"; };
+		E9E6BB1A19FAE86E00BD5D92 /* StereoViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StereoViewDelegate.h; sourceTree = "<group>"; };
+		E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StereoViewDelegate.mm; sourceTree = "<group>"; };
+		E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OffscreenBuffer.h; sourceTree = "<group>"; };
+		E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = OffscreenBuffer.mm; sourceTree = "<group>"; };
+		E9E6BB2119FB7A5D00BD5D92 /* GameRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRenderer.h; sourceTree = "<group>"; };
+		E9E6BB2219FB7A5D00BD5D92 /* GameRenderer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameRenderer.mm; sourceTree = "<group>"; };
+		E9E6BB2419FB7AD900BD5D92 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		E9E6BB2519FB7AD900BD5D92 /* Game.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Game.mm; sourceTree = "<group>"; };
+		E9E6BB5D19FB8D5E00BD5D92 /* Chunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chunk.h; sourceTree = "<group>"; };
+		E9E6BB5E19FB8D5E00BD5D92 /* Chunk.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Chunk.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				E972A6261708129100E77895 /* Mountains IIb.app */,
-				E972A64F1708129400E77895 /* Mountains IIbTests.octest */,
+				E972A64F1708129400E77895 /* Mountains IIbTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,10 +144,10 @@
 		E972A62F1708129100E77895 /* Mountains IIb */ = {
 			isa = PBXGroup;
 			children = (
+				E9E6BB2019FB7A4300BD5D92 /* Game */,
 				E972A67E170815CE00E77895 /* bigtexture.png */,
-				E9E6BB1719FADF1700BD5D92 /* Model + Utilities */,
+				E9E6BB1719FADF1700BD5D92 /* Utility */,
 				E9E6BB1619FADF0E00BD5D92 /* View Controllers */,
-				E9E6BB1819FADF2B00BD5D92 /* Shaders */,
 				E9E6BB1919FADFA800BD5D92 /* Views */,
 				E972A6301708129100E77895 /* Supporting Files */,
 			);
@@ -194,40 +194,42 @@
 				E972A6391708129200E77895 /* AppDelegate.m */,
 				E972A6411708129200E77895 /* ViewController.h */,
 				E972A6421708129200E77895 /* ViewController.m */,
-				E972A6441708129200E77895 /* ViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		E9E6BB1719FADF1700BD5D92 /* Model + Utilities */ = {
+		E9E6BB1719FADF1700BD5D92 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				E9E6BB1319FADEAE00BD5D92 /* COBGLProgram.h */,
 				E9E6BB1419FADEAE00BD5D92 /* COBGLProgram.m */,
+				E96FA27919FBB4EB004F2B8F /* GLUtilities.h */,
 			);
-			name = "Model + Utilities";
-			sourceTree = "<group>";
-		};
-		E9E6BB1819FADF2B00BD5D92 /* Shaders */ = {
-			isa = PBXGroup;
-			children = (
-				E94008831709DDB900314D67 /* RegularVertex.glsl */,
-				E94008841709DDB900314D67 /* Stereoscopic.glsl */,
-				E972A680170815DD00E77895 /* Fragment.glsl */,
-				E972A681170815DE00E77895 /* Vertex.glsl */,
-			);
-			name = Shaders;
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		E9E6BB1919FADFA800BD5D92 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E972A67A170815C000E77895 /* GLView.h */,
-				E972A67B170815C000E77895 /* GLView.mm */,
-				E972A6731708133300E77895 /* GameView.h */,
-				E972A6741708133300E77895 /* GameView.mm */,
+				E9E6BB1A19FAE86E00BD5D92 /* StereoViewDelegate.h */,
+				E9E6BB1B19FAE86E00BD5D92 /* StereoViewDelegate.mm */,
+				E9E6BB1D19FAEAB100BD5D92 /* OffscreenBuffer.h */,
+				E9E6BB1E19FAEAB100BD5D92 /* OffscreenBuffer.mm */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		E9E6BB2019FB7A4300BD5D92 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				E9E6BB2119FB7A5D00BD5D92 /* GameRenderer.h */,
+				E9E6BB2219FB7A5D00BD5D92 /* GameRenderer.mm */,
+				E9E6BB2419FB7AD900BD5D92 /* Game.h */,
+				E9E6BB2519FB7AD900BD5D92 /* Game.mm */,
+				E9E6BB5D19FB8D5E00BD5D92 /* Chunk.h */,
+				E9E6BB5E19FB8D5E00BD5D92 /* Chunk.mm */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +268,7 @@
 			);
 			name = "Mountains IIbTests";
 			productName = "Mountains IIbTests";
-			productReference = E972A64F1708129400E77895 /* Mountains IIbTests.octest */;
+			productReference = E972A64F1708129400E77895 /* Mountains IIbTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -302,16 +304,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E972A68417081DE700E77895 /* Fragment.glsl in Resources */,
-				E972A68517081DE700E77895 /* Vertex.glsl in Resources */,
 				E972A6341708129100E77895 /* InfoPlist.strings in Resources */,
 				E972A63C1708129200E77895 /* Default.png in Resources */,
 				E972A63E1708129200E77895 /* Default@2x.png in Resources */,
 				E972A6401708129200E77895 /* Default-568h@2x.png in Resources */,
-				E972A6461708129200E77895 /* ViewController.xib in Resources */,
 				E972A67F170815CE00E77895 /* bigtexture.png in Resources */,
-				E94008851709DDB900314D67 /* RegularVertex.glsl in Resources */,
-				E94008861709DDB900314D67 /* Stereoscopic.glsl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,11 +344,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E972A68A1709949000E77895 /* ViewController.m in Sources */,
-				E972A68C1709949000E77895 /* GameView.mm in Sources */,
+				E9E6BB1F19FAEAB100BD5D92 /* OffscreenBuffer.mm in Sources */,
 				E9E6BB1519FADEAE00BD5D92 /* COBGLProgram.m in Sources */,
-				E972A6881709949000E77895 /* GLView.mm in Sources */,
+				E9E6BB2619FB7AD900BD5D92 /* Game.mm in Sources */,
 				E972A6891709949000E77895 /* AppDelegate.m in Sources */,
+				E9E6BB1C19FAE86E00BD5D92 /* StereoViewDelegate.mm in Sources */,
+				E9E6BB5F19FB8D5E00BD5D92 /* Chunk.mm in Sources */,
 				E972A68B1709949000E77895 /* main.m in Sources */,
+				E9E6BB2319FB7A5D00BD5D92 /* GameRenderer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,14 +380,6 @@
 				E972A6331708129100E77895 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E972A6441708129200E77895 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E972A6451708129200E77895 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 		E972A6591708129500E77895 /* InfoPlist.strings */ = {

@@ -1,4 +1,4 @@
-// AppDelegate.h
+// COBGLProgram.h
 //
 // Copyright 2014 Thomas Denney
 //
@@ -14,15 +14,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
-#import "ViewController.h"
+#ifndef Mountains_IIb_GLUtilities_h
+#define Mountains_IIb_GLUtilities_h
 
-@class ViewController;
+template <class T>
+inline void glBufferData(GLenum target, const std::vector<T>& v, GLenum usage) {
+    glBufferData(target, v.size() * sizeof(T), &v[0], usage);
+}
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) ViewController *viewController;
-
-@end
+#endif

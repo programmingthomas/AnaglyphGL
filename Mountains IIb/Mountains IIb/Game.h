@@ -1,4 +1,4 @@
-// AppDelegate.h
+// Game.h
 //
 // Copyright 2014 Thomas Denney
 //
@@ -14,15 +14,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import <GLKit/GLKit.h>
+#import "COBGLProgram.h"
 
-@class ViewController;
+extern const int WorldWidthInChunks;
+extern const int WorldLengthInChunks;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface Game : NSObject {
+    GLuint _texture;
+}
 
-@property (strong, nonatomic) UIWindow *window;
+@property (readonly) COBGLProgram * program;
 
-@property (strong, nonatomic) ViewController *viewController;
+@property GLKMatrix4 projectionMatrix;
+@property GLKMatrix4 viewMatrix;
+@property GLKMatrix4 modelMatrix;
+
+@property GLKVector3 cameraPosition;
+@property GLKVector3 cameraRotation;
+
+- (void)recalculateCameraPosition;
+
+- (void)drawWithCameraOffsetMatrix:(GLKMatrix4)cameraOffsetMatrix;
 
 @end

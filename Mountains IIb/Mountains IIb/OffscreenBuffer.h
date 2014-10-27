@@ -1,4 +1,4 @@
-// AppDelegate.h
+// OffscreenBuffer.h
 //
 // Copyright 2014 Thomas Denney
 //
@@ -14,15 +14,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <UIKit/UIKit.h>
-#import "ViewController.h"
+#import <GLKit/GLKit.h>
 
-@class ViewController;
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) ViewController *viewController;
-
-@end
+class OffscreenBuffer {
+public:
+    GLsizei width, height;
+    GLuint texture;
+    GLuint frameBuffer, depthBuffer;
+    
+    OffscreenBuffer(GLsizei width, GLsizei height);
+    ~OffscreenBuffer();
+    
+    void Bind();
+};
