@@ -30,7 +30,10 @@ extern const int WorldLengthInChunks;
 @property GLKMatrix4 viewMatrix;
 @property GLKMatrix4 modelMatrix;
 
-@property GLKVector4 cameraPosition;
+@property GLKVector3 cameraPosition;
+@property GLKVector3 cameraRotation;
+
+- (void)recalculateCameraPosition;
 
 - (void)drawWithCameraOffsetMatrix:(GLKMatrix4)cameraOffsetMatrix;
 

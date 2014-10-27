@@ -33,7 +33,7 @@ NSString * const vertexShaderSource = @""
 "uniform mat4 projectionMatrix;"
 "uniform mat4 modelViewMatrix;"
 "varying float fogFactor;"
-"uniform vec4 cameraPos;"
+"uniform vec3 cameraPos;"
 
 "attribute vec2 uv;"
 "varying vec2 uvOut;"
@@ -123,6 +123,18 @@ NSString * const fragmentShaderSource = @""
     }
 }
 
+#pragma mark - Updating
+
+- (void)recalculateCameraPosition {
+    GLKMatrix4 cameraMatrix = GLKMatrix4Identity;
+    cameraMatrix = GLKMatrix4RotateX(cameraMatrix, self.cameraRotation.x);
+    cameraMatrix = GLKMatrix4RotateY(cameraMatrix, self.cameraRotation.z);
+    cameraMatrix = GLKMatrix4RotateZ(cameraMatrix, self.cameraRotation.y);
+    cameraMatrix = GLKMatrix4TranslateWithVector3(cameraMatrix, GLKVector3Negate(self.cameraPosition));
+    
+    self.viewMatrix = cameraMatrix;
+}
+
 #pragma mark - Rendering
 
 - (void)drawWithCameraOffsetMatrix:(GLKMatrix4)cameraOffsetMatrix {
@@ -134,7 +146,7 @@ NSString * const fragmentShaderSource = @""
     
     [self.program use];
     glUniform4f([self.program uniform:@"sky"], 0.75, 0.9, 0.95, 1);
-    glUniform4fv([self.program uniform:@"cameraPos"], 1, self.cameraPosition.v);
+    glUniform3fv([self.program uniform:@"cameraPos"], 1, self.cameraPosition.v);
     
     glUniformMatrix4fv(self.program.projectionMatrix, 1, GL_FALSE, self.projectionMatrix.m);
     
@@ -147,9 +159,6 @@ NSString * const fragmentShaderSource = @""
     glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, viewMatrix.m);
     
     for (auto chunk : _chunks) {
-        GLKMatrix4 translation = GLKMatrix4MakeTranslation(chunk->positon.x, chunk->positon.y, chunk->positon.z);
-//        GLKMatrix4 modelViewMatrix = GLKMatrix4Multiply(viewMatrix, translation);
-//        glUniformMatrix4fv(self.program.modelViewMatrix, 1, GL_FALSE, modelViewMatrix.m);
         chunk->Draw();
     }
     

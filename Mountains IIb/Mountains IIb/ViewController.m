@@ -90,14 +90,9 @@ BOOL const Stereoscopic3D = YES;
     self.game.projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65), ratio, 0.01f, 100.0f);
     self.game.modelMatrix = GLKMatrix4Identity;
     
-    GLKMatrix4 cameraMatrix = GLKMatrix4Identity;
-    cameraMatrix = GLKMatrix4RotateX(cameraMatrix, self.cameraRotation.x);
-    cameraMatrix = GLKMatrix4RotateY(cameraMatrix, self.cameraRotation.z);
-    cameraMatrix = GLKMatrix4RotateZ(cameraMatrix, self.cameraRotation.y);
-    cameraMatrix = GLKMatrix4TranslateWithVector3(cameraMatrix, GLKVector3Negate(self.cameraPosition));
-    
-    self.game.viewMatrix = cameraMatrix;
-    self.game.cameraPosition = GLKVector4MakeWithVector3(self.cameraPosition, 0);
+    [self.game recalculateCameraPosition];
+    self.game.cameraPosition = self.cameraPosition;
+    self.game.cameraRotation = self.cameraRotation;
 }
 
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect {
